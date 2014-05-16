@@ -6,14 +6,30 @@
 
 package ch.brinika.sportsplanner5000.business;
 
+import ch.brinika.sportsplanner5000.domain.Place;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author simon
+ * @author Andreas Briw
  */
 @Stateless
+@LocalBean
 public class PlaceEJB {
+    
+    @PersistenceContext(unitName = "ch.brinika_sportsplanner5000_war_1.0PU")
+    EntityManager em;
+    
+    // Methods -------------------------------------------------------------
+    public Place createPlace(Place place)
+    {
+        em.persist(place);
+        return place;
+    }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
