@@ -7,6 +7,7 @@
 package ch.brinika.sportsplanner5000.business;
 
 import ch.brinika.sportsplanner5000.domain.Place;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,10 +26,26 @@ public class PlaceEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
+    public List<Place> findPlaces(){
+        return em.createNamedQuery("Place.findAll").getResultList();
+    }
+    
     public Place createPlace(Place place)
     {
         em.persist(place);
         return place;
+    }
+    
+    public String deletePlace(Place place)
+    {
+        em.remove(em.merge(place));
+        return ("Place deleted");
+    }
+    
+    public String updatePlace(Place place)
+    {
+        em.merge(place);
+        return ("Place updatet");
     }
 
     // Add business logic below. (Right-click in editor and choose
