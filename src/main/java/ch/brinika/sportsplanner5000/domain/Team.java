@@ -7,34 +7,73 @@
 package ch.brinika.sportsplanner5000.domain;
 
 import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Simon Kaufmann, Andreas Briw, Michael Niggler
+ * @author simon
  */
 @Entity
+@Table(name = "Team")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Team.findAll", query = "SELECT t FROM Team t"),
+    @NamedQuery(name = "Team.findByTeamID", query = "SELECT t FROM Team t WHERE t.teamID = :teamID"),
+    @NamedQuery(name = "Team.findByName", query = "SELECT t FROM Team t WHERE t.name = :name")})
 public class Team implements Serializable {
+    @ManyToMany(mappedBy = "teamCollection")
+    private Collection<Person> personCollection;
+    @ManyToMany(mappedBy = "teamCollection")
+    private Collection<Event> eventCollection;
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "teamID")
+    private Integer teamID;
+    @Size(max = 45)
+    @Column(name = "name")
+    private String name;
 
-    public Long getId() {
-        return id;
+    public Team() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Team(Integer teamID) {
+        this.teamID = teamID;
+    }
+
+    public Integer getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(Integer teamID) {
+        this.teamID = teamID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (teamID != null ? teamID.hashCode() : 0);
         return hash;
     }
 
@@ -45,7 +84,7 @@ public class Team implements Serializable {
             return false;
         }
         Team other = (Team) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.teamID == null && other.teamID != null) || (this.teamID != null && !this.teamID.equals(other.teamID))) {
             return false;
         }
         return true;
@@ -53,7 +92,25 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.brinika.sportsplanner5000.domain.Team[ id=" + id + " ]";
+        return "ch.brinika.sportsplanner5000.domain.Team[ teamID=" + teamID + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Person> getPersonCollection() {
+        return personCollection;
+    }
+
+    public void setPersonCollection(Collection<Person> personCollection) {
+        this.personCollection = personCollection;
+    }
+
+    @XmlTransient
+    public Collection<Event> getEventCollection() {
+        return eventCollection;
+    }
+
+    public void setEventCollection(Collection<Event> eventCollection) {
+        this.eventCollection = eventCollection;
     }
     
 }

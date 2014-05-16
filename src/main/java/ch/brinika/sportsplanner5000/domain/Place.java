@@ -7,46 +7,82 @@
 package ch.brinika.sportsplanner5000.domain;
 
 import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Simon Kaufmann, Andreas Briw, Michael Niggler
+ * @author simon
  */
 @Entity
-@Table(name = "t_place")
+@Table(name = "Place")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Place.findAll", query = "SELECT p FROM Place p"),
+    @NamedQuery(name = "Place.findByPlaceID", query = "SELECT p FROM Place p WHERE p.placeID = :placeID"),
+    @NamedQuery(name = "Place.findByLocation", query = "SELECT p FROM Place p WHERE p.location = :location"),
+    @NamedQuery(name = "Place.findByName", query = "SELECT p FROM Place p WHERE p.name = :name"),
+    @NamedQuery(name = "Place.findByDescription", query = "SELECT p FROM Place p WHERE p.description = :description")})
 public class Place implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable =false) // NOT NULL
-    private String place;
-    @Column(nullable =false) // NOT NULL
-    private String placename;
-    @Column(length =2000) // Give a length
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "placeID")
+    private Integer placeID;
+    @Size(max = 45)
+    @Column(name = "location")
+    private String location;
+    @Size(max = 45)
+    @Column(name = "name")
+    private String name;
+    @Size(max = 45)
+    @Column(name = "description")
     private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "placeID")
+    private Collection<Event> eventCollection;
 
-    public String getPlace() {
-        return place;
+    public Place() {
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public Place(Integer placeID) {
+        this.placeID = placeID;
     }
 
-    public String getPlacename() {
-        return placename;
+    public Integer getPlaceID() {
+        return placeID;
     }
 
-    public void setPlacename(String placename) {
-        this.placename = placename;
+    public void setPlaceID(Integer placeID) {
+        this.placeID = placeID;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -56,19 +92,20 @@ public class Place implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public Long getId() {
-        return id;
+
+    @XmlTransient
+    public Collection<Event> getEventCollection() {
+        return eventCollection;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEventCollection(Collection<Event> eventCollection) {
+        this.eventCollection = eventCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (placeID != null ? placeID.hashCode() : 0);
         return hash;
     }
 
@@ -79,7 +116,7 @@ public class Place implements Serializable {
             return false;
         }
         Place other = (Place) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.placeID == null && other.placeID != null) || (this.placeID != null && !this.placeID.equals(other.placeID))) {
             return false;
         }
         return true;
@@ -87,7 +124,7 @@ public class Place implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.brinika.sportsplanner5000.domain.Place[ id=" + id + " ]";
+        return "ch.brinika.sportsplanner5000.domain.Place[ placeID=" + placeID + " ]";
     }
     
 }
