@@ -7,6 +7,7 @@
 package ch.brinika.sportsplanner5000.business;
 
 import ch.brinika.sportsplanner5000.domain.Event;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,11 +25,27 @@ public class EventEJB {
     @PersistenceContext(unitName = "ch.brinika_sportsplanner5000_war_1.0PU")
     EntityManager em;
     
-    // Methods -------------------------------------------------------------
+     // Methods -------------------------------------------------------------
+    public List<Event> findEvents(){
+        return em.createNamedQuery("Event.findAll").getResultList();
+    }
+    
     public Event createEvent(Event event)
     {
         em.persist(event);
         return event;
+    }
+    
+    public String deleteEvent(Event event)
+    {
+        em.remove(em.merge(event));
+        return ("Event deleted");
+    }
+    
+    public String updateEvent(Event event)
+    {
+        em.merge(event);
+        return ("Event updatet");
     }
 
     // Add business logic below. (Right-click in editor and choose
