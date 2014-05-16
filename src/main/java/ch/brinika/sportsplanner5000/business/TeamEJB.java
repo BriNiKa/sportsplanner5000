@@ -27,7 +27,7 @@ public class TeamEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    public List<Team> findBooks() {
+    public List<Team> findTeams() {
         TypedQuery<Team> query = em.createNamedQuery("Team.findAll", Team.class);
         return query.getResultList();
     }
