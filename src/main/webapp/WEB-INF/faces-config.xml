@@ -3,5 +3,24 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
+    <managed-bean>
+        <managed-bean-name>personController</managed-bean-name>
+        <managed-bean-class>ch.brinika.sportsplanner5000.controller.PersonController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>placeController</managed-bean-name>
+        <managed-bean-class>ch.brinika.sportsplanner5000.controller.PlaceController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>teamController</managed-bean-name>
+        <managed-bean-class>ch.brinika.sportsplanner5000.controller.TeamController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>eventController</managed-bean-name>
+        <managed-bean-class>ch.brinika.sportsplanner5000.controller.EventController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
