@@ -7,10 +7,12 @@
 package ch.brinika.sportsplanner5000.business;
 
 import ch.brinika.sportsplanner5000.domain.Team;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -25,13 +27,26 @@ public class TeamEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    //testkommentar
+    public List<Team> findBooks() {
+        TypedQuery<Team> query = em.createNamedQuery("Team.findAll", Team.class);
+        return query.getResultList();
+    }
+    
+    public Team findTeamById(Long id) {
+        return em.find(Team.class, id);
+    }
+    
     public Team createTeam(Team team)
     {
         em.persist(team);
         return team;
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public void deleteTeam(Team team)
+    {
+        em.remove(em.merge(team));
+    }
+    public Team updateTeam(Team team)
+    {
+        return em.merge(team);
+    }
 }
