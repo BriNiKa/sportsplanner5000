@@ -25,6 +25,7 @@ public class TeamEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
+    //testkommentar
     public Team createTeam(Team team)
     {
         em.persist(team);
