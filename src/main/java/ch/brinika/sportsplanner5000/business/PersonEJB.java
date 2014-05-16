@@ -27,7 +27,7 @@ public class PersonEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    public List<Person> findBooks()
+    public List<Person> findPersons()
     {
         TypedQuery<Person> query = em.createNamedQuery("Person.findAll", Person.class);
         return query.getResultList();
