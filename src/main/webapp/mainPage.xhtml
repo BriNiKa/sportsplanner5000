@@ -16,25 +16,76 @@
         <h:body>
 
             <p:layout fullPage="true">
-<!--
-                <p:layoutUnit position="north" size="01" resizable="false" closable="true" collapsible="true" style="text-align: center;">
-                    Sportsplanner5000
-                </p:layoutUnit>
--->
+                <!--
+                                <p:layoutUnit position="north" size="01" resizable="false" closable="true" collapsible="true" style="text-align: center;">
+                                    Sportsplanner5000
+                                </p:layoutUnit>
+                -->
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true" style="text-align: center;">
                     De Simon esch de bescht!
                 </p:layoutUnit>
-                
+
                 <p:layoutUnit position="center" style="border: 0px;">
                     <p:tabView id="tabView" style="border: 0px;">
 
                         <p:tab id="tab1" title="Personenverwaltung">
                             <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText id="tab1Text"
-                                              value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
-                                              His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T
-                                              hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
-                                              but given to ruthless violence whenever anything stands against the good of the family." />
+                                <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
+                                <h:messages/>
+                                <h:form prependId="false">
+                                    
+                                    Vorname:
+                                    <h:inputText id="prename" 
+                                                 value="#{personFormular.prename}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst einen Vornamen eingeben" />
+                                    <h:message for="prename"/>
+                                    <br/>
+                                    Nachname:
+                                    <h:inputText id="lastname" 
+                                                 value="#{personFormular.lastname}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst einen Nachnamen eingeben" />
+                                    <h:message for="lastname"/>
+                                    <br/>
+                                    Adresse:<br/>
+                                    Strasse:
+                                    <h:inputText id="street" 
+                                                 value="#{personFormular.street}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst eine Strasse eingeben" />
+                                    Nr.:
+                                    <h:inputText id="plz" 
+                                                 value="#{personFormular.plz}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst eine PLZ eingeben" />
+                                    <h:message for="adress"/>
+                                    <br/>
+                                    E-Mail:
+                                    <h:inputText id="email" 
+                                                 value="#{personFormular.email}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst eine E-Mail eingeben" />
+                                    <h:message for="email"/>
+                                    <br/>
+                                    Telefonnummer:
+                                    <h:inputText id="phone" 
+                                                 value="#{personFormular.phone}" 
+                                                 required="true" 
+                                                 requiredMessage="Du musst ein Telefonnummer eingeben" />
+                                    <h:message for="phone"/>
+                                    <br/>
+
+                                    <br/>
+
+                                    <h:commandButton 
+                                        value="Speichern" 
+                                        action="#{personFormular.speichern}"/>
+                                    <h:commandButton 
+                                        value="Abbrechen" 
+                                        action="#{personFormular.abbrechen}"/>
+
+                                </h:form>
                             </h:panelGrid>
                         </p:tab>
 
@@ -52,7 +103,7 @@
                                               Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
                             </h:panelGrid>
                         </p:tab>
-                        
+
                         <p:tab id="tab4" title="Ortsverwaltung">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText id="tab4Text" value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.
@@ -69,4 +120,3 @@
 
     </f:view>
 </html>
-
