@@ -91,9 +91,26 @@
 
                         <p:tab id="tab2" title="Teamverwaltung">
                             <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText id="tab2Text" value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.
-                                              In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,
-                                              killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows."/>
+                                <f:view>
+                                    <h:form>
+                                        <h1><h:outputText value="List"/></h1>
+                                        <p:dataTable value="#{teamController.placeList}" var="item">
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="TeamID"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.teamID}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Name"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.name}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:form>
+                                </f:view>
+
                             </h:panelGrid>
                         </p:tab>
 
