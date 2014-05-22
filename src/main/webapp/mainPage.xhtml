@@ -21,7 +21,7 @@
                                     Sportsplanner5000
                                 </p:layoutUnit>
                 -->
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true" style="text-align: center;">
+                <p:layoutUnit position="south" size="30" closable="true" collapsible="true" style="text-align: center;">
                     De Simon esch de bescht, der Andreas aber öi!
                 </p:layoutUnit>
 
@@ -32,15 +32,14 @@
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
                                 <h:messages/>
-                                <p:layout style="min-width:1200px;min-height:400px;">
-                                    <p:layoutUnit position="west" resizable="true" size="600" minSize="40">
+                                <p:layout style="min-width:1300px;min-height:400px;">
+                                    <p:layoutUnit position="west" resizable="true" size="850" minSize="40">
                                         <f:view>
                                             <h:form>
-                                                <h1><h:outputText value="List"/></h1>
                                                 <p:dataTable value="#{personController.personList}" var="item">
                                                     <p:column>
                                                         <f:facet name="header">
-                                                            <h:outputText value="PersonID"/>
+                                                            <h:outputText value="ID"/>
                                                         </f:facet>
                                                         <h:outputText value="#{item.personID}"/>
                                                     </p:column>
@@ -74,6 +73,67 @@
                                                         </f:facet>
                                                         <h:outputText value="#{item.phone}"/>
                                                     </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value=""/>
+                                                        </f:facet>
+                                                        <h:commandButton 
+                                                            value="Löschen"
+                                                            action="#{personController.doDeletePerson(item.personID)}">
+                                                        </h:commandButton>
+                                                        <br/>
+                                                        <br/>
+                                                        <p:commandButton 
+                                                            value="Bearbeiten"
+                                                            onclick="PF('dlg3').show();">
+                                                        </p:commandButton>
+                                                        <p:dialog header="Effects" widgetVar="dlg3" height="300" width="350">
+                                                            <h:form prependId="false">
+
+                                                                Vorname:
+                                                                <p:inputText id="prename" 
+                                                                             value="#{personController.person.prename}" 
+                                                                             required="true" 
+                                                                             requiredMessage="Du musst einen Vornamen eingeben" />
+                                                                <p:message for="prename"/>
+                                                                <br/>
+                                                                Nachname:
+                                                                <p:inputText id="surname" 
+                                                                             value="#{personController.person.surname}" 
+                                                                             required="true" 
+                                                                             requiredMessage="Du musst einen Nachnamen eingeben" />
+                                                                <p:message for="surname"/>
+                                                                <br/>
+                                                                Adresse:
+                                                                <p:inputText id="address" 
+                                                                             value="#{personController.person.address}" 
+                                                                             required="true" 
+                                                                             requiredMessage="Du musst eine Strasse eingeben" />
+                                                                <p:message for="address"/>
+                                                                <br/>
+                                                                E-Mail:
+                                                                <p:inputText id="email" 
+                                                                             value="#{personController.person.mail}" 
+                                                                             required="true" 
+                                                                             requiredMessage="Du musst eine E-Mail eingeben" />
+                                                                <p:message for="email"/>
+                                                                <br/>
+                                                                Telefonnummer:
+                                                                <p:inputText id="phone" 
+                                                                             value="#{personController.person.phone}" 
+                                                                             required="true" 
+                                                                             requiredMessage="Du musst ein Telefonnummer eingeben" />
+                                                                <p:message for="phone"/>
+
+                                                                <br/>
+                                                                <br/>
+                                                                <p:commandButton 
+                                                                    value="Speichern" 
+                                                                    action="#{personController.doUpdatePerson()}"/>
+
+                                                            </h:form>
+                                                        </p:dialog>
+                                                    </p:column>
                                                 </p:dataTable>
                                             </h:form>
                                         </f:view>
@@ -82,12 +142,7 @@
 
                                     <p:layoutUnit position="center" resizable="true" size="400">
                                         <h:form prependId="false">
-                                            ID:
-                                            <h:inputText id="personid" 
-                                                         value="#{personController.person.personID}" 
-                                                         required="true" 
-                                                         requiredMessage="Du musst eine ID eingeben" />
-                                            <h:message for="personid"/>
+
                                             Vorname:
                                             <h:inputText id="prename" 
                                                          value="#{personController.person.prename}" 
@@ -95,7 +150,34 @@
                                                          requiredMessage="Du musst einen Vornamen eingeben" />
                                             <h:message for="prename"/>
                                             <br/>
-              
+                                            Nachname:
+                                            <h:inputText id="surname" 
+                                                         value="#{personController.person.surname}" 
+                                                         required="true" 
+                                                         requiredMessage="Du musst einen Nachnamen eingeben" />
+                                            <h:message for="surname"/>
+                                            <br/>
+                                            Adresse:
+                                            <h:inputText id="address" 
+                                                         value="#{personController.person.address}" 
+                                                         required="true" 
+                                                         requiredMessage="Du musst eine Strasse eingeben" />
+                                            <h:message for="address"/>
+                                            <br/>
+                                            E-Mail:
+                                            <h:inputText id="email" 
+                                                         value="#{personController.person.mail}" 
+                                                         required="true" 
+                                                         requiredMessage="Du musst eine E-Mail eingeben" />
+                                            <h:message for="email"/>
+                                            <br/>
+                                            Telefonnummer:
+                                            <h:inputText id="phone" 
+                                                         value="#{personController.person.phone}" 
+                                                         required="true" 
+                                                         requiredMessage="Du musst ein Telefonnummer eingeben" />
+                                            <h:message for="phone"/>
+
                                             <br/>
                                             <br/>
                                             <h:commandButton 
@@ -143,9 +225,9 @@
 
                         <p:tab id="tab4" title="Ortsverwaltung">
                             <h:panelGrid columns="2" cellpadding="5">
-                               <p:layout style="min-width:1200px;min-height:400px;">
-                                   <p:layoutUnit position="west" resizable="true" size="800" minSize="40">
-                                        
+                                <p:layout style="min-width:1200px;min-height:400px;">
+                                    <p:layoutUnit position="west" resizable="true" size="800" minSize="40">
+
                                         <h:form>
                                             <h1><h:outputText value="List"/></h1>
                                             <p:dataTable value="#{placeController.placeList}" var="item" style="width:30px;">

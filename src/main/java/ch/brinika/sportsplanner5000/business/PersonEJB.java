@@ -43,9 +43,11 @@ public class PersonEJB {
         return person;
     }
     
-    public void deletePerson(Person person)
+    public String deletePerson(int id)
     {
+        Person person = em.find(Person.class, id);
         em.remove(em.merge(person));
+        return ("Person deleted");
     }
     public Person updatePerson(Person person)
     {

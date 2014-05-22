@@ -24,25 +24,25 @@ public class PersonController {
     @EJB
     private PersonEJB personEJB;
 
-    public String doCreatePerson()
+    public void doCreatePerson()
     {
         personEJB.createPerson(person);
         personList = personEJB.findPersons();
-        return "Person_created";
+        //return "Person_created";
     }
     
-     public String doUpdatePerson()
+     public void doUpdatePerson()
     {
         personEJB.updatePerson(person);
         personList = personEJB.findPersons();
-        return "Person_Update";
+        //return "Person_Update";
     }
      
-       public String doDeletePerson()
+       public void doDeletePerson(int id)
     {
-        personEJB.deletePerson(person);
+        personEJB.deletePerson(id);
         personList = personEJB.findPersons();
-        return "Persons_deleted";
+        //return "Persons_deleted";
     }
     
     public Person getPerson() {
