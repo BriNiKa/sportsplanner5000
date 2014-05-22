@@ -25,7 +25,7 @@ public class TeamController {
     @EJB
     private TeamEJB teamEJB;
 
-    public String doCreatePlace()
+    public String doCreateTeam()
     {
         teamEJB.createTeam(team);
         teamList = teamEJB.findTeams();
@@ -54,12 +54,12 @@ public class TeamController {
         this.team = team;
     }
 
-    public List<Team> getPlaceList() {
+    public List<Team> getTeamList() {
         teamList = teamEJB.findTeams();
         return teamList;
     }
 
-    public void setPlaceList(List<Team> teamList) {
+    public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
     }
 
