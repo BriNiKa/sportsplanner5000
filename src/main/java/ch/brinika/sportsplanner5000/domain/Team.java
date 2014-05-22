@@ -11,6 +11,7 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
@@ -39,9 +40,9 @@ public class Team implements Serializable {
     private Collection<Event> eventCollection;
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @NotNull
     @Column(name = "teamID")
+    @GeneratedValue
     private Integer teamID;
     @Size(max = 45)
     @Column(name = "name")
