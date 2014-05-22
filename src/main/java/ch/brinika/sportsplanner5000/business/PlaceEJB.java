@@ -36,8 +36,9 @@ public class PlaceEJB {
         return place;
     }
     
-    public String deletePlace(Place place)
+    public String deletePlace(String id)
     {
+        Place place = em.find(Place.class, id);
         em.remove(em.merge(place));
         return ("Place deleted");
     }

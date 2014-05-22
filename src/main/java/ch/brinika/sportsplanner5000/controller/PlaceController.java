@@ -38,9 +38,9 @@ public class PlaceController {
         return "Place_updated";
     }
      
-       public String doDeletePlace()
+       public String doDeletePlace(String id)
     {
-        placeEJB.deletePlace(place);
+        placeEJB.deletePlace(id);
         placeList = placeEJB.findPlaces();
         return "Place_updated";
     }

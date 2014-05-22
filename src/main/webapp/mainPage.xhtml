@@ -146,7 +146,7 @@
                                 <f:view>
                                     <h:form>
                                         <h1><h:outputText value="List"/></h1>
-                                        <p:dataTable value="#{teamController.placeList}" var="item">
+                                        <p:dataTable value="#{teamController.teamList}" var="item">
                                             <p:column>
                                                 <f:facet name="header">
                                                     <h:outputText value="TeamID"/>
@@ -175,8 +175,64 @@
 
                         <p:tab id="tab4" title="Ortsverwaltung">
                             <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText id="tab4Text" value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.
-                                              Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
+                               <p:layout style="min-width:1200px;min-height:400px;">
+                                   <p:layoutUnit position="west" resizable="true" size="800" minSize="40">
+                                        
+                                        <h:form>
+                                            <h1><h:outputText value="List"/></h1>
+                                            <p:dataTable value="#{placeController.placeList}" var="item" style="width:30px;">
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="PlaceID"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.placeID}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Location"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.location}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Name"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.name}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Description"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.description}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value=""/>
+                                                    </f:facet>
+                                                    <h:commandButton value="Löschen" action="#{placeController.doDeletePlace(item.placeID)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:form>
+
+                                    </p:layoutUnit>
+
+                                    <p:layoutUnit position="center" resizable="true" size="400">
+
+                                        <h:form>
+                                            <h1><h:outputText value="Create/Edit"/></h1>
+                                            <p:panelGrid columns="2">
+                                                <p:outputLabel value="Location:" for="location" />
+                                                <p:inputText id="location" value="#{placeController.place.location}" title="Location" />
+                                                <p:outputLabel value="Name:" for="name" />
+                                                <p:inputText id="name" value="#{placeController.place.name}" title="Name" />
+                                                <p:outputLabel value="Description:" for="description" />
+                                                <p:inputText id="description" value="#{placeController.place.description}" title="Description" />
+                                            </p:panelGrid>
+                                            <h:commandButton value="Speichern" action="#{placeController.doCreatePlace()}"/>
+                                        </h:form>
+
+                                    </p:layoutUnit>
+                                </p:layout> 
                             </h:panelGrid>
                         </p:tab>
 
