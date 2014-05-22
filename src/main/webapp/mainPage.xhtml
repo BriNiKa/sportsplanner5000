@@ -77,11 +77,9 @@
                                                         <f:facet name="header">
                                                             <h:outputText value=""/>
                                                         </f:facet>
-                                                        <h:outputText value="#{item.personID}"/>
-                                                        <h:inputHidden value="#{item.personID}"/>
                                                         <h:commandButton 
                                                             value="Löschen"
-                                                            action="#{personController.doDeletePerson()}">
+                                                            action="#{personController.doDeletePerson(item.personID)}">
                                                         </h:commandButton>
                                                     </p:column>
                                                 </p:dataTable>

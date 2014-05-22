@@ -24,25 +24,25 @@ public class PlaceController {
     @EJB
     private PlaceEJB placeEJB;
 
-    public String doCreatePlace()
+    public void doCreatePlace()
     {
         placeEJB.createPlace(place);
         placeList = placeEJB.findPlaces();
-        return "Place_created";
+        //return "Place_created";
     }
     
-     public String doUpdatePlace()
+     public void doUpdatePlace()
     {
         placeEJB.updatePlace(place);
         placeList = placeEJB.findPlaces();
-        return "Place_updated";
+        //return "Place_updated";
     }
      
-       public String doDeletePlace(int id)
+       public void doDeletePlace(int id)
     {
         placeEJB.deletePlace(id);
         placeList = placeEJB.findPlaces();
-        return "Place_updated";
+        //return "Place_updated";
     }
     
     public Place getPlace() {
