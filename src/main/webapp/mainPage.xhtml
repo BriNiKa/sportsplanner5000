@@ -82,6 +82,12 @@
 
                                     <p:layoutUnit position="center" resizable="true" size="400">
                                         <h:form prependId="false">
+                                            ID:
+                                            <h:inputText id="personid" 
+                                                         value="#{personController.person.personID}" 
+                                                         required="true" 
+                                                         requiredMessage="Du musst eine ID eingeben" />
+                                            <h:message for="personid"/>
                                             Vorname:
                                             <h:inputText id="prename" 
                                                          value="#{personController.person.prename}" 
@@ -89,33 +95,7 @@
                                                          requiredMessage="Du musst einen Vornamen eingeben" />
                                             <h:message for="prename"/>
                                             <br/>
-                                            Nachname:
-                                            <h:inputText id="surname" 
-                                                         value="#{personController.person.surname}" 
-                                                         required="true" 
-                                                         requiredMessage="Du musst einen Nachnamen eingeben" />
-                                            <h:message for="surname"/>
-                                            <br/>
-                                            Adresse:
-                                            <h:inputText id="address" 
-                                                         value="#{personController.person.address}" 
-                                                         required="true" 
-                                                         requiredMessage="Du musst eine Strasse eingeben" />
-                                            <h:message for="address"/>
-                                            <br/>
-                                            E-Mail:
-                                            <h:inputText id="email" 
-                                                         value="#{personController.person.mail}" 
-                                                         required="true" 
-                                                         requiredMessage="Du musst eine E-Mail eingeben" />
-                                            <h:message for="email"/>
-                                            <br/>
-                                            Telefonnummer:
-                                            <h:inputText id="phone" 
-                                                         value="#{personController.person.phone}" 
-                                                         required="true" 
-                                                         requiredMessage="Du musst ein Telefonnummer eingeben" />
-                                            <h:message for="phone"/>
+              
                                             <br/>
                                             <br/>
                                             <h:commandButton 
