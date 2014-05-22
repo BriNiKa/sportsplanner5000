@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -43,9 +45,10 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @NotNull
     @Column(name = "personID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer personID;
     @Size(max = 45)
     @Column(name = "prename")
