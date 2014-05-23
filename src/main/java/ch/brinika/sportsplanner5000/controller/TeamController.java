@@ -25,25 +25,24 @@ public class TeamController {
     @EJB
     private TeamEJB teamEJB;
 
-    public String doCreateTeam()
+    public void doCreateTeam()
     {
         teamEJB.createTeam(team);
         teamList = teamEJB.findTeams();
-        return "Team_created";
+        //return "Team_created";
     }
     
-     public String doUpdateTeam()
+     public void doUpdateTeam()
     {
         teamEJB.updateTeam(team);
         teamList = teamEJB.findTeams();
-        return "Team_updated";
+        //return "Team_updated";
     }
      
-       public String doDeleteTeam()
+       public void doDeleteTeam(int id)
     {
-        teamEJB.deleteTeam(team);
+        teamEJB.deleteTeam(id);
         teamList = teamEJB.findTeams();
-        return "Team_updated";
     }
     
     public Team getTeam() {

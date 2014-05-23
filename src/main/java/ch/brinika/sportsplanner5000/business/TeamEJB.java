@@ -41,8 +41,9 @@ public class TeamEJB {
         em.persist(team);
         return team;
     }
-    public void deleteTeam(Team team)
+    public void deleteTeam(int id)
     {
+        Team team = em.find(Team.class, id);
         em.remove(em.merge(team));
     }
     public Team updateTeam(Team team)

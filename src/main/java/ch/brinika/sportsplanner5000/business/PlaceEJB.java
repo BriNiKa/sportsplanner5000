@@ -36,18 +36,16 @@ public class PlaceEJB {
         return place;
     }
     
-    public String deletePlace(int id)
+    public void deletePlace(int id)
     {
         
         Place place = em.find(Place.class, id);
         em.remove(em.merge(place));
-        return ("Place deleted");
     }
     
-    public String updatePlace(Place place)
+    public void updatePlace(Place place)
     {
         em.merge(place);
-        return ("Place updatet");
     }
 
 }
