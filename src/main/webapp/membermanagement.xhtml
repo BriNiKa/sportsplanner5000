@@ -9,13 +9,17 @@
         <p:layout style="min-width:1200px;min-height:400px;">
             <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
                 <h:form>
-                    <p:messages autoUpdate="true" />
-                    <p:selectOneMenu id="console" value="#{teamController.team.name}" var="select">
-                        <f:selectItem itemLabel="Select One" itemValue="" />
-                        <f:selectItem itemLabel="#{select.name}" itemValue="Xbox One" />
-                        <f:selectItem itemLabel="#{teamController.team.name}" itemValue="PS4" />
-                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                    
+                    <p:dataList value="#{teamController.teamList}" var="tl">
+                    <h:outputText value="Name: #{tl.name}"/><br/>
+                    </p:dataList>
+                    
+                    <p:selectOneMenu value="#{teamController.teamList}" var="select">
+                        <f:selectItems value="#{select.teamID}" var="team" itemLabel="#{select.name}">
+                        </f:selectItems>
                     </p:selectOneMenu>
+                    
+                    
                 </h:form>
                 <h:form>
                     <p:dataTable value="#{personController.personList}" var="item">
@@ -34,7 +38,8 @@
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
-                            <h:commandButton 
+                            (Aus Zwischentabelle löschen??)
+                            <h:commandButton
                                 value="Löschen" 
                                 action="#{personController.doCreatePerson()}"/>
 
@@ -78,6 +83,7 @@
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
+                            (In Zwischentabelle einfügen??)
                             <h:commandButton 
                                 value="Hinzufügen" 
                                 action="#{personController.doCreatePerson()}"/>
