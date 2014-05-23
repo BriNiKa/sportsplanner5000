@@ -8,7 +8,7 @@
         
         
         <p:layout style="min-width:1200px;min-height:400px;">
-            <p:layoutUnit position="west" resizable="true" size="700" minSize="40" style="border: 0px solid #000000;">
+            <p:layoutUnit position="west" resizable="true" size="800" minSize="40" style="border: 0px solid #000000;">
                 <b><h:outputText id="welcomeEvent" value="Willkommen bei der Eventverwaltung"/></b>
                 <br/>
                 <br/>
@@ -37,13 +37,13 @@
                                 <f:facet name="header">
                                     <h:outputText value="Schiedsrichter"/>
                                 </f:facet>
-                                <h:outputText value="#{item.personID}"/>
+                                <h:outputText value="#{item.personID.prename}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Austragungsort"/>
                                 </f:facet>
-                                <h:outputText value="#{item.placeID}"/>
+                                <h:outputText value="#{item.placeID.name}"/>
                             </p:column>
                             <p:column>
                                 <h:commandButton action="#{eventController.doDeleteEvent(item.eventID)}" value="Löschen"/>
@@ -53,7 +53,7 @@
                 </f:view>
                     
             </p:layoutUnit>
-            <p:layoutUnit position="center" resizable="true" size="400" style="border: 0px solid #000000;">
+            <p:layoutUnit position="center" resizable="true" size="500" style="border: 0px solid #000000;">
                 <f:view>
                     <h:form>
                         <b><h:outputText id="welcomeEvent" value="Neuen Event erfassen"/></b>
@@ -65,14 +65,17 @@
                             <p:outputLabel value="Eventart:" for="type" />
                             <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
                             <p:outputLabel value="Schiedsrichter:" for="personID" />
-                            <p:selectOneMenu id="personID" value="#{eventController.event.personID}" required="true" requiredMessage="The PersonID field is required.">
+                            <p:selectOneMenu id="personID" value="#{eventController.event.personID}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{personController.personList}"/>
+                                <f:selectItems value="#{personController.personList}" var="person" itemLabel="#{person.prename}" 
+                                               itemValue="#{person}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="Austragungsort:" for="placeID" />
-                            <p:selectOneMenu id="placeID" value="#{eventController.event.placeID}" required="true" requiredMessage="The PlaceID field is required.">
+                            <p:selectOneMenu id="placeID" value="#{eventController.event.placeID}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{placeController.placeList}"/>
+                                
+                                <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  
+                                               itemValue="#{place}"/>
                             </p:selectOneMenu>
                         </p:panelGrid>
                         <br/>
