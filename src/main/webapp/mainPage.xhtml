@@ -225,7 +225,7 @@
 
                                     </p:layoutUnit>
                                 </p:layout> 
-                                
+
                             </h:panelGrid>
                         </p:tab>
 
@@ -284,7 +284,7 @@
 
                                         <h:form>
                                             <b><h:outputText id="tab4Text" value="Bearbeiten / Löschen"/></b>
-                                <h:messages/>
+                                            <h:messages/>
                                             <p:panelGrid columns="2">
                                                 <p:outputLabel value="Location:" for="location" />
                                                 <p:inputText id="location" value="#{placeController.place.location}" title="Location" />
@@ -300,13 +300,94 @@
                                 </p:layout> 
                             </h:panelGrid>
                         </p:tab>
+                        <p:tab id="tab5" title="Teammitglieder">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:messages/>
+                                <p:layout style="min-width:1200px;min-height:400px;">
+                                    <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
+                                        (Hier Dropdown und Liste mit allen Teammitgliedern)
+                                        <h:form>
+                                            <p:messages autoUpdate="true" />
+                                                <p:outputLabel for="console" value="Basic:" />
+                                                <p:selectOneMenu id="console" value="#{selectOneMenuView.console}">
+                                                    <f:selectItem itemLabel="Select One" itemValue="" />
+                                                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                                </p:selectOneMenu>
+                                        </h:form>
+                                        <h:form>
+                                            <p:dataTable value="#{personController.personList}" var="item">
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Prename"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.prename}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Surname"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.surname}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:form>
 
-                    </p:tabView>
-                </p:layoutUnit>
 
-            </p:layout>
+                                                </p:layoutUnit>
 
-        </h:body>
+                                                <p:layoutUnit position="center" resizable="true" size="400">
+                                                    (Alle möglchen Teammitglieder auflisten)
 
-    </f:view>
-</html>
+
+                                                    <h:form>
+                                                        <p:dataTable value="#{personController.personList}" var="item">
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Prename"/>
+                                                                </f:facet>
+                                                                <h:outputText value="#{item.prename}"/>
+                                                            </p:column>
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Surname"/>
+                                                                </f:facet>
+                                                                <h:outputText value="#{item.surname}"/>
+                                                            </p:column>
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Address"/>
+                                                                </f:facet>
+                                                                <h:outputText value="#{item.address}"/>
+                                                            </p:column>
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Mail"/>
+                                                                </f:facet>
+                                                                <h:outputText value="#{item.mail}"/>
+                                                            </p:column>
+                                                            <p:column>
+                                                                <f:facet name="header">
+                                                                    <h:outputText value="Phone"/>
+                                                                </f:facet>
+                                                                <h:outputText value="#{item.phone}"/>
+                                                            </p:column>
+                                                        </p:dataTable>
+                                                    </h:form>
+
+
+
+                                                </p:layoutUnit>
+                                                </p:layout> 
+                                            </h:panelGrid>
+                                            </p:tab>
+
+                                            </p:tabView>
+                                    </p:layoutUnit>
+
+                                </p:layout>
+
+                                </h:body>
+
+                                </f:view>
+                                </html>
