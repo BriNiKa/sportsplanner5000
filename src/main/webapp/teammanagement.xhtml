@@ -5,38 +5,36 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText id="tabIrgendwasText" value="Willkommen bei der Teamverwaltung"/>
-                                <h:messages/>
-                                <p:layout style="min-width:1200px;min-height:400px;">
-                                    <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
+        <h:outputText id="tabIrgendwasText" value="Willkommen bei der Teamverwaltung"/>
+        <h:messages/>
+        <p:layout style="min-width:1200px;min-height:400px;">
+            <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
+                <h:form>
+                    <p:dataTable value="#{teamController.teamList}" var="item" style="width:300px;">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
 
-                                        <h:form>
-                                            <h1><h:outputText value="List"/></h1>
-                                            <p:dataTable value="#{teamController.teamList}" var="item" style="width:300px;">
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Name"/>
-                                                    </f:facet>
-                                                    <h:outputText value="#{item.name}"/>
-                                                </p:column>
-                                            </p:dataTable>
-                                        </h:form>
+            </p:layoutUnit>
 
-                                    </p:layoutUnit>
+            <p:layoutUnit position="center" resizable="true" size="400">
 
-                                    <p:layoutUnit position="center" resizable="true" size="400">
+                <h:form>
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Name:" for="name" />
+                        <p:inputText id="name" value="#{teamController.team.name}" title="Name" />
+                    </p:panelGrid>
+                    <p:commandButton value="Speichern" action="#{teamController.doCreateTeam()}"/>
+                </h:form>
 
-                                        <h:form>
-                                            <h1><h:outputText value="Create/Edit"/></h1>
-                                            <p:panelGrid columns="2">
-                                                <p:outputLabel value="Name:" for="name" />
-                                                <p:inputText id="name" value="#{teamController.team.name}" title="Name" />
-                                            </p:panelGrid>
-                                            <p:commandButton value="Speichern" action="#{teamController.doCreateTeam()}"/>
-                                        </h:form>
+            </p:layoutUnit>
+        </p:layout> 
 
-                                    </p:layoutUnit>
-                                </p:layout> 
-                                
-                            </h:panelGrid>
+    </h:panelGrid>
 </ui:composition>

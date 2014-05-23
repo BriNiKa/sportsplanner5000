@@ -8,7 +8,7 @@
                                 <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
                                 <h:messages/>
                                 <p:layout style="min-width:1300px;min-height:400px;">
-                                    <p:layoutUnit position="west" resizable="true" size="850" minSize="40">
+                                    <p:layoutUnit position="west" resizable="true" size="1000" minSize="40">
                                         <f:view>
                                             <h:form>
                                                 <p:dataTable value="#{personController.personList}" var="item">
@@ -52,10 +52,10 @@
                                                         <f:facet name="header">
                                                             <h:outputText value=""/>
                                                         </f:facet>
-                                                        <h:commandButton 
+                                                        <p:commandButton 
                                                             value="Löschen"
                                                             action="#{personController.doDeletePerson(item.personID)}">
-                                                        </h:commandButton>
+                                                        </p:commandButton>
                                                         <br/>
                                                         <br/>
                                                         <p:commandButton 
