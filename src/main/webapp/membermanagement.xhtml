@@ -1,0 +1,91 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:panelGrid columns="2" cellpadding="5">
+        <h:messages/>
+        <p:layout style="min-width:1200px;min-height:400px;">
+            <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
+                <h:form>
+                    <p:messages autoUpdate="true" />
+                    <p:selectOneMenu id="console" value="#{teamController.team.name}" var="select">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="#{select.name}" itemValue="Xbox One" />
+                        <f:selectItem itemLabel="#{teamController.team.name}" itemValue="PS4" />
+                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                    </p:selectOneMenu>
+                </h:form>
+                <h:form>
+                    <p:dataTable value="#{personController.personList}" var="item">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prename"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prename}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Surname"/>
+                            </f:facet>
+                            <h:outputText value="#{item.surname}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                            </f:facet>
+                            <h:commandButton 
+                                value="Löschen" 
+                                action="#{personController.doCreatePerson()}"/>
+
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center" resizable="true" size="400">
+                <h:form>
+                    <p:dataTable value="#{personController.personList}" var="item">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prename"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prename}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Surname"/>
+                            </f:facet>
+                            <h:outputText value="#{item.surname}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Address"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Mail"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mail}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Phone"/>
+                            </f:facet>
+                            <h:outputText value="#{item.phone}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                            </f:facet>
+                            <h:commandButton 
+                                value="Hinzufügen" 
+                                action="#{personController.doCreatePerson()}"/>
+
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout> 
+    </h:panelGrid>
+</ui:composition>
