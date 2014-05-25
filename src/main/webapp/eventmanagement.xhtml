@@ -5,7 +5,86 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
-        <h:outputText id="tab3Text" value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.
-                      Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate."/>
+        
+        
+        <p:layout style="min-width:1200px;min-height:400px;">
+            <p:layoutUnit position="west" resizable="true" size="800" minSize="40" style="border: 0px solid #000000;">
+                <b><h:outputText id="welcomeEvent" value="Willkommen bei der Eventverwaltung"/></b>
+                <br/>
+                <br/>
+                <f:view>
+                    <h:form>
+                        <p:dataTable value="#{eventController.eventList}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EventID"/>
+                                </f:facet>
+                                <h:outputText value="#{item.eventID}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Name"/>
+                                </f:facet>
+                                <h:outputText value="#{item.name}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Eventart"/>
+                                </f:facet>
+                                <h:outputText value="#{item.type}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Schiedsrichter"/>
+                                </f:facet>
+                                <h:outputText value="#{item.personID.prename}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Austragungsort"/>
+                                </f:facet>
+                                <h:outputText value="#{item.placeID.name}"/>
+                            </p:column>
+                            <p:column>
+                                <h:commandButton action="#{eventController.doDeleteEvent(item.eventID)}" value="Löschen"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+                    
+            </p:layoutUnit>
+            <p:layoutUnit position="center" resizable="true" size="500" style="border: 0px solid #000000;">
+                <f:view>
+                    <h:form>
+                        <b><h:outputText id="welcomeEvent" value="Neuen Event erfassen"/></b>
+                        <br/>
+                        <br/>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Name:" for="name" />
+                            <p:inputText id="name" value="#{eventController.event.name}" title="Name" />
+                            <p:outputLabel value="Eventart:" for="type" />
+                            <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
+                            <p:outputLabel value="Schiedsrichter:" for="personID" />
+                            <p:selectOneMenu id="personID" value="#{eventController.event.personID}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{personController.personList}" var="person" itemLabel="#{person.prename}" 
+                                               itemValue="#{person}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Austragungsort:" for="placeID" />
+                            <p:selectOneMenu id="placeID" value="#{eventController.event.placeID}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                
+                                <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  
+                                               itemValue="#{place}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <br/>
+                        <br/>
+                        <h:commandButton action="#{eventController.doCreateEvent()}" value="Speichern"/>
+                    </h:form>
+                </f:view>
+                    
+            </p:layoutUnit>
+        </p:layout> 
     </h:panelGrid>
 </ui:composition>

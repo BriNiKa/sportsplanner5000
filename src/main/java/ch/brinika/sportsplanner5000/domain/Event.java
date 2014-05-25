@@ -8,9 +8,9 @@ package ch.brinika.sportsplanner5000.domain;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -39,9 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Event implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @NotNull
     @Column(name = "eventID")
+    @GeneratedValue
     private Integer eventID;
     @Size(max = 45)
     @Column(name = "name")

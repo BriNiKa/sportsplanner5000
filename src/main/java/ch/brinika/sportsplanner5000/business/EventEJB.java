@@ -36,10 +36,11 @@ public class EventEJB {
         return event;
     }
     
-    public String deleteEvent(Event event)
+    public void deleteEvent(int id)
     {
+        Event event = em.find(Event.class, id);
         em.remove(em.merge(event));
-        return ("Event deleted");
+        // return ("Event deleted");
     }
     
     public String updateEvent(Event event)

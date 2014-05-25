@@ -24,25 +24,25 @@ public class EventController {
     @EJB
     private EventEJB eventEJB;
 
-    public String doCreateEvent()
+    public void doCreateEvent()
     {
         eventEJB.createEvent(event);
         eventList = eventEJB.findEvents();
-        return "Event_Created";
+       // return "Event_Created";
     }
     
-     public String doUpdateEvent()
+     public void doUpdateEvent()
     {
         eventEJB.updateEvent(event);
         eventList = eventEJB.findEvents();
-        return "Event_updated";
+       // return "Event_updated";
     }
      
-       public String doDeleteEvent()
+       public void doDeleteEvent(int id)
     {
-        eventEJB.deleteEvent(event);
+        eventEJB.deleteEvent(id);
         eventList = eventEJB.findEvents();
-        return "Event_deleted";
+        //return "Event_deleted";
     }
     
     public Event getEvent() {
