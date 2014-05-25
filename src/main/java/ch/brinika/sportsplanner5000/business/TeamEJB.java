@@ -6,7 +6,9 @@
 
 package ch.brinika.sportsplanner5000.business;
 
+import ch.brinika.sportsplanner5000.domain.Person;
 import ch.brinika.sportsplanner5000.domain.Team;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -48,5 +50,10 @@ public class TeamEJB {
     public Team updateTeam(Team team)
     {
         return em.merge(team);
+    }
+    public Collection<Person> getTeamMember(Team team)
+    {
+        return findTeamById((long)team.getTeamID()).getPersonCollection();
+        
     }
 }

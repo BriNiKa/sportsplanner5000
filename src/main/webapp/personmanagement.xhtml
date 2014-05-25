@@ -52,21 +52,22 @@
                                                         <f:facet name="header">
                                                             <h:outputText value=""/>
                                                         </f:facet>
-                                                        <p:commandButton 
+                                                        <h:commandButton 
                                                             value="Löschen"
                                                             action="#{personController.doDeletePerson(item.personID)}">
-                                                        </p:commandButton>
+                                                        </h:commandButton>
                                                         <br/>
                                                         <br/>
                                                         <p:commandButton 
                                                             value="Bearbeiten"
-                                                            onclick="PF('dlg3').show();">
+                                                            
+                                                            onclick="#{personController.setselectedPerson(item.personID)}; PF('dlg3').show();">
                                                         </p:commandButton>
                                                         <p:dialog header="Effects" widgetVar="dlg3" height="300" width="350">
                                                             <h:form prependId="false">
 
                                                                 Vorname:
-                                                                <p:inputText id="prename" 
+                                                                <p:inputText id="prename"
                                                                              value="#{personController.person.prename}" 
                                                                              required="true" 
                                                                              requiredMessage="Du musst einen Vornamen eingeben" />

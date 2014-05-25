@@ -12,16 +12,19 @@
                     
                     <p:dataList value="#{teamController.teamList}" var="tl">
                     <h:outputText value="Name: #{tl.name}"/><br/>
+                    <h:outputText value="Name: #{tl.teamID}"/><br/>
                     </p:dataList>
                     
-                    <p:selectOneMenu value="#{teamController.teamList}" var="select">
-                        <f:selectItems value="#{select.teamID}" var="team" itemLabel="#{select.name}">
+                    <p:selectOneMenu value="#{personController.team}" onchange="">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}">
+                            
                         </f:selectItems>
                     </p:selectOneMenu>
                     
-                    
                 </h:form>
                 <h:form>
+                    
                     <p:dataTable value="#{personController.personList}" var="item">
                         <p:column>
                             <f:facet name="header">

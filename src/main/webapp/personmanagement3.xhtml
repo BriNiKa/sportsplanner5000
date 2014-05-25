@@ -1,0 +1,40 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:panelGrid columns="2" cellpadding="5">
+
+        <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
+        <h:messages/>
+        <p:layout style="min-width:1300px;min-height:400px;">
+            <p:layoutUnit position="west" resizable="true" size="1000" minSize="40">
+                <f:view>
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true"/>
+
+                        <p:dataTable id="cars1" var="car" value="#{personController.personList}" editable="true" style="margin-bottom:20px">
+                            
+                            <p:ajax event="rowEdit" listener="#{personController.onRowEdit}"  />
+                            <p:ajax event="rowEditCancel" listener="#{personController.onRowCancel}" />
+
+                            <p:column headerText="Id">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{person.personID}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="modelInput" value="#{person.personID}" style="width:100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column style="width:32px">
+                                <p:rowEditor />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+            </p:layoutUnit>
+            <p:layoutUnit position="center" resizable="true" size="400">
+            </p:layoutUnit>
+        </p:layout>
+    </h:panelGrid>
+</ui:composition>

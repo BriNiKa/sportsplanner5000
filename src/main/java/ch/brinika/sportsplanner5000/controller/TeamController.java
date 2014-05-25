@@ -7,8 +7,10 @@
 package ch.brinika.sportsplanner5000.controller;
 
 import ch.brinika.sportsplanner5000.business.TeamEJB;
+import ch.brinika.sportsplanner5000.domain.Person;
 import ch.brinika.sportsplanner5000.domain.Team;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 

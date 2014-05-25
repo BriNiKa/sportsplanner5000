@@ -1,0 +1,99 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:panelGrid columns="2" cellpadding="5">
+
+        <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
+        <h:messages/>
+        <p:layout style="min-width:1300px;min-height:400px;">
+            <p:layoutUnit position="west" resizable="true" size="1000" minSize="40">
+                <f:view>
+                    <h:form>
+                        <p:growl id="msg" showDetail="true"/>
+                        <p:dataTable id="persons" var="person" value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
+                            
+                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" update="" />
+                            
+                            <p:column headerText="ID">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{person.personID}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="modelInput" value="#{person.personID}" style="width:96%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Vorname">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{person.prename}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{person.prename}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Nachname">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{person.surname}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{person.surname}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Telefon">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{person.phone}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{person.phone}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" resizable="true" size="400">
+                <h:form prependId="false">
+
+                    Vorname:
+                    <h:inputText id="prename" 
+                                 value="#{personController.person.prename}" 
+                                 required="true" 
+                                 requiredMessage="Du musst einen Vornamen eingeben" />
+                    <h:message for="prename"/>
+                    <br/>
+                    Nachname:
+                    <h:inputText id="surname" 
+                                 value="#{personController.person.surname}" 
+                                 required="true" 
+                                 requiredMessage="Du musst einen Nachnamen eingeben" />
+                    <h:message for="surname"/>
+                    <br/>
+                    Adresse:
+                    <h:inputText id="address" 
+                                 value="#{personController.person.address}" 
+                                 required="true" 
+                                 requiredMessage="Du musst eine Strasse eingeben" />
+                    <h:message for="address"/>
+                    <br/>
+                    E-Mail:
+                    <h:inputText id="email" 
+                                 value="#{personController.person.mail}" 
+                                 required="true" 
+                                 requiredMessage="Du musst eine E-Mail eingeben" />
+                    <h:message for="email"/>
+                    <br/>
+                    Telefonnummer:
+                    <h:inputText id="phone" 
+                                 value="#{personController.person.phone}" 
+                                 required="true" 
+                                 requiredMessage="Du musst ein Telefonnummer eingeben" />
+                    <h:message for="phone"/>
+
+                    <br/>
+                    <br/>
+                    <h:commandButton 
+                        value="Speichern" 
+                        action="#{personController.doCreatePerson()}"/>
+
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:panelGrid>
+</ui:composition>
