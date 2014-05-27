@@ -52,7 +52,7 @@ public class Place implements Serializable {
     @Size(max = 45)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "placeID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "placeFromEvent")
     private Collection<Event> eventCollection;
 
     public Place() {

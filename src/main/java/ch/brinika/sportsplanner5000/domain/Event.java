@@ -56,10 +56,10 @@ public class Event implements Serializable {
     private Collection<Team> teamCollection;
     @JoinColumn(name = "Person_ID", referencedColumnName = "personID")
     @ManyToOne(optional = false)
-    private Person personID;
+    private Person personFromEvent;
     @JoinColumn(name = "Place_ID", referencedColumnName = "placeID")
     @ManyToOne(optional = false)
-    private Place placeID;
+    private Place placeFromEvent;
 
     public Event() {
     }
@@ -71,7 +71,7 @@ public class Event implements Serializable {
     public Integer getEventID() {
         return eventID;
     }
-
+    
     public void setEventID(Integer eventID) {
         this.eventID = eventID;
     }
@@ -101,20 +101,20 @@ public class Event implements Serializable {
         this.teamCollection = teamCollection;
     }
 
-    public Person getPersonID() {
-        return personID;
+    public Person getPersonFromEvent() {
+        return personFromEvent;
     }
 
-    public void setPersonID(Person personID) {
-        this.personID = personID;
+    public void setPersonFromEvent(Person personFromEvent) {
+        this.personFromEvent = personFromEvent;
     }
 
-    public Place getPlaceID() {
-        return placeID;
+    public Place getPlaceFromEvent() {
+        return placeFromEvent;
     }
 
-    public void setPlaceID(Place placeID) {
-        this.placeID = placeID;
+    public void setPlaceFromEvent(Place placeFromEvent) {
+        this.placeFromEvent = placeFromEvent;
     }
 
     @Override

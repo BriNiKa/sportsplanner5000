@@ -70,7 +70,7 @@ public class Person implements Serializable {
         @JoinColumn(name = "Team_ID", referencedColumnName = "teamID")})
     @ManyToMany
     private Collection<Team> teamCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personFromEvent")
     private Collection<Event> eventCollection;
 
     public Person() {

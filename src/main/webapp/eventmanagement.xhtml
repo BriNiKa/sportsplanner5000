@@ -37,13 +37,13 @@
                                 <f:facet name="header">
                                     <h:outputText value="Schiedsrichter"/>
                                 </f:facet>
-                                <h:outputText value="#{item.personID.prename}"/>
+                                <h:outputText value="#{item.personFromEvent.prename}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Austragungsort"/>
                                 </f:facet>
-                                <h:outputText value="#{item.placeID.name}"/>
+                                <h:outputText value="#{item.placeFromEvent.name}"/>
                             </p:column>
                             <p:column>
                                 <h:commandButton action="#{eventController.doDeleteEvent(item.eventID)}" value="Löschen"/>
@@ -65,13 +65,13 @@
                             <p:outputLabel value="Eventart:" for="type" />
                             <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
                             <p:outputLabel value="Schiedsrichter:" for="personID" />
-                            <p:selectOneMenu id="personID" value="#{eventController.event.personID}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
+                            <p:selectOneMenu id="personID" value="#{eventController.event.personFromEvent}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{personController.personList}" var="person" itemLabel="#{person.prename}" 
                                                itemValue="#{person}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="Austragungsort:" for="placeID" />
-                            <p:selectOneMenu id="placeID" value="#{eventController.event.placeID}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
+                            <p:selectOneMenu id="placeID" value="#{eventController.event.placeFromEvent}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 
                                 <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  

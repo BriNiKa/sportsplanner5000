@@ -12,12 +12,12 @@ import ch.brinika.sportsplanner5000.domain.Team;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 /**
