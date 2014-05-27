@@ -12,15 +12,15 @@
             <p:layoutUnit position="west" resizable="true" size="1000" minSize="40">
                 <f:view>
                     <h:form>
-                        <p:growl id="msg" showDetail="true"/>
-                        <p:dataTable id="persons" var="person" value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
+                        <p:growl id="msg"/>
+                        <p:dataTable id="persons" var="person" paginator="true"  value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
                             
-                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" update="" />
+                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" process="@this" update=""/>
                             
                             <p:column headerText="ID">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{person.personID}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="modelInput" value="#{person.personID}" style="width:96%"/></f:facet>
+                                    <f:facet name="input"><p:inputText id="modelInput" value="#{person.personID}" style="width:90%"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
 
@@ -42,6 +42,7 @@
                                     <f:facet name="input"><p:inputText value="#{person.phone}" style="width:96%" label="Year"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
+                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" update="" />
                         </p:dataTable>
                     </h:form>
                 </f:view>

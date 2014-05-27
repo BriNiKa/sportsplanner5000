@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.RowEditEvent;
@@ -24,6 +25,7 @@ import org.primefaces.event.RowEditEvent;
  *
  * @author simon
  */
+
 public class PersonController {
 
     private Person person = new Person();
@@ -74,13 +76,14 @@ public class PersonController {
     }
 
      public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
+        
+        //Object oldValue = event.getOldValue();
+        //Object newValue = event.getNewValue();
          
-        if(newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
+        //if(newValue != null && !newValue.equals(oldValue)) {
+            //FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            //FacesContext.getCurrentInstance().addMessage(null, msg);
+        //}
     }
     
     public Team getTeam() {

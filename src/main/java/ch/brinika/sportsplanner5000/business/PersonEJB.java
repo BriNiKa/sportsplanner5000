@@ -10,6 +10,7 @@ import ch.brinika.sportsplanner5000.domain.Person;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
