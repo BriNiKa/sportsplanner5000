@@ -10,11 +10,6 @@
             <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
                 <h:form>
                     
-                    <p:dataList value="#{teamController.teamList}" var="tl">
-                    <h:outputText value="Name: #{tl.name}"/><br/>
-                    <h:outputText value="Name: #{tl.teamID}"/><br/>
-                    </p:dataList>
-                    
                     <p:selectOneMenu value="#{personController.team}" onchange="">
                         <f:selectItem itemLabel="Select One" itemValue="" />
                         <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}">
@@ -25,7 +20,7 @@
                 </h:form>
                 <h:form>
                     
-                    <p:dataTable value="#{personController.personList}" var="item">
+                    <p:dataTable paginator="true" rows="8" value="#{personController.personList}" var="item">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Prename"/>
@@ -41,7 +36,7 @@
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
-                            (Aus Zwischentabelle löschen??)
+                            
                             <h:commandButton
                                 value="Löschen" 
                                 action="#{personController.doCreatePerson()}"/>
@@ -52,7 +47,7 @@
             </p:layoutUnit>
             <p:layoutUnit position="center" resizable="true" size="400">
                 <h:form>
-                    <p:dataTable value="#{personController.personList}" var="item">
+                    <p:dataTable paginator="true" rows="8" value="#{personController.personList}" var="item">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Prename"/>
@@ -86,10 +81,10 @@
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
-                            (In Zwischentabelle einfügen??)
+                            
                             <h:commandButton 
                                 value="Hinzufügen" 
-                                action="#{personController.doCreatePerson()}"/>
+                                />
 
                         </p:column>
                     </p:dataTable>
