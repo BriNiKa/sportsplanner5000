@@ -23,4 +23,9 @@
         <managed-bean-class>ch.brinika.sportsplanner5000.controller.EventController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>memberController</managed-bean-name>
+        <managed-bean-class>ch.brinika.sportsplanner5000.controller.MemberController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
