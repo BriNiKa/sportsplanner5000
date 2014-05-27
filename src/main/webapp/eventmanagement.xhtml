@@ -33,7 +33,21 @@
                                 </f:facet>
                                 <h:outputText value="#{item.type}"/>
                             </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Datum"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.sdate}">
+                             <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Team"/>
+                                </f:facet>
+                                <h:outputText value="#{item.teamFromEvent.name}"/>
+                            </p:column>
+                                <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Schiedsrichter"/>
                                 </f:facet>
@@ -64,6 +78,14 @@
                             <p:inputText id="name" value="#{eventController.event.name}" title="Name" />
                             <p:outputLabel value="Eventart:" for="type" />
                             <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
+                            <p:outputLabel value="Datum:" for="sdate" />
+                            <p:calendar id="sdate" value="#{eventController.event.sdate}" showOn="button" />
+                            <p:outputLabel value="Team:" for="teamID" />
+                            <p:selectOneMenu id="teamID" value="#{eventController.event.teamFromEvent}" converter="teamConverter" required="true" requiredMessage="The PersonID field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" 
+                                               itemValue="#{team}"/>
+                            </p:selectOneMenu>
                             <p:outputLabel value="Schiedsrichter:" for="personID" />
                             <p:selectOneMenu id="personID" value="#{eventController.event.personFromEvent}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
