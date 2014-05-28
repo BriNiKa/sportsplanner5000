@@ -79,7 +79,7 @@
                             <p:outputLabel value="Eventart:" for="type" />
                             <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
                             <p:outputLabel value="Datum:" for="sdate" />
-                            <p:calendar id="sdate" value="#{eventController.event.sdate}" showOn="button" />
+                            <p:calendar id="sdate" value="#{eventController.event.sdate}" locale="de" navigator="true" pattern="dd-MMM-yyyy"/>
                             <p:outputLabel value="Team:" for="teamID" />
                             <p:selectOneMenu id="teamID" value="#{eventController.event.teamFromEvent}" converter="teamConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->

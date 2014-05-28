@@ -3,8 +3,6 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="index.xhtml" x="458" y="152" zoom="true"/>
-        <Node id="welcomePrimefaces.xhtml" x="150" y="150" zoom="true"/>
-        <Node id="index.html" x="462" y="293" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
