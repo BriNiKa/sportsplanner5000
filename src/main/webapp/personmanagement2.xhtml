@@ -13,36 +13,52 @@
                 <f:view>
                     <h:form>
                         <p:growl id="msg"/>
-                        <p:dataTable id="persons" var="person" paginator="true"  value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
+                        <p:dataTable id="persons" var="anzeigen" paginator="true" rows="15"  value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
                             
-                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" process="@this" update=""/>
+                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}"/>
                             
                             <p:column headerText="ID">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{person.personID}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="modelInput" value="#{person.personID}" style="width:90%"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.personID}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.personID}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
-
                             <p:column headerText="Vorname">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{person.prename}" /></f:facet>
-                                    <f:facet name="input"><p:inputText value="#{person.prename}" style="width:96%" label="Year"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.prename}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.prename}" style="width:96%" label="Year"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
                             <p:column headerText="Nachname">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{person.surname}" /></f:facet>
-                                    <f:facet name="input"><p:inputText value="#{person.surname}" style="width:96%" label="Year"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.surname}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.surname}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column headerText="Adresse">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.address}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.address}" style="width:96%" label="Year"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
                             <p:column headerText="Telefon">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{person.phone}" /></f:facet>
-                                    <f:facet name="input"><p:inputText value="#{person.phone}" style="width:96%" label="Year"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.phone}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.phone}" style="width:96%" label="Year"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
-                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}" update="" />
+                            <p:column headerText="E-Mail">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.mail}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{personController.person.mail}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            <p:column width="30">
+                            <h:commandButton 
+                                    value="Löschen"
+                                    action="#{personController.doDeletePerson(anzeigen.personID)}">
+                                </h:commandButton>
+                            </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>

@@ -9,6 +9,7 @@ import ch.brinika.sportsplanner5000.business.PersonEJB;
 import ch.brinika.sportsplanner5000.business.TeamEJB;
 import ch.brinika.sportsplanner5000.domain.Person;
 import ch.brinika.sportsplanner5000.domain.Team;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,14 +20,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
+
 import org.primefaces.event.RowEditEvent;
 
 /**
  *
  * @author simon
  */
-
-public class PersonController {
+@ViewScoped
+public class PersonController implements Serializable {
 
     private Person person = new Person();
     private Team team = new Team();
@@ -64,26 +66,22 @@ public class PersonController {
     
         person = personEJB.findPersonById(id);
     }
-    
-    public void onRowEdit(RowEditEvent event) {
-        //FacesMessage msg = new FacesMessage("Car Edited", ((Person) event.getObject()).getPersonID());
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-     
-    public void onRowCancel(RowEditEvent event) {
-        //FacesMessage msg = new FacesMessage("Edit Cancelled", ((Person) event.getObject()).getPersonID());
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
 
      public void onCellEdit(CellEditEvent event) {
         
-        //Object oldValue = event.getOldValue();
-        //Object newValue = event.getNewValue();
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+        
+        System.out.println("Old:" + oldValue);
+        System.out.println("New:" + newValue);
+        
+        personEJB.updatePerson(person);
+        personList = personEJB.findPersons();
          
-        //if(newValue != null && !newValue.equals(oldValue)) {
-            //FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            //FacesContext.getCurrentInstance().addMessage(null, msg);
-        //}
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
     
     public Team getTeam() {
