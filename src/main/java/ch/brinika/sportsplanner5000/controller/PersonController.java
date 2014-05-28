@@ -92,6 +92,9 @@ public class PersonController implements Serializable {
         else if("E-Mail".equals(columnHeader)){
             personOld.setMail(newValueFromEdit);
         }
+        else{
+            System.out.println("Fehler " + columnHeader);
+        }
         
         personEJB.updatePerson(personOld);
         personList = personEJB.findPersons();
