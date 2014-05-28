@@ -4,9 +4,9 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<!-- html source code -->
-<link type="text/css" rel="stylesheet" href="/project/faces/javax.faces.resource/theme.css?ln=primefaces-afterwork" />
-
+    <!-- html source code -->
+    <link type="text/css" rel="stylesheet" href="/project/faces/javax.faces.resource/theme.css?ln=primefaces-afterwork" />
+    
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
@@ -14,9 +14,9 @@
                 <title>Sportsplanner5000</title>
             </f:facet>
         </h:head>
-
+        
         <h:body>
-
+            
             <p:layout fullPage="true">
                 <!--
                                 <p:layoutUnit position="north" size="01" resizable="false" closable="true" collapsible="true" style="text-align: center;">
@@ -26,36 +26,35 @@
                 <p:layoutUnit position="south" size="30" closable="true" collapsible="true" style="text-align: center;">
                     Sportsplanner 5000 &copy; BriNiKa Solutions
                 </p:layoutUnit>
-
+                
                 <p:layoutUnit position="center" style="border: 0px;">
-                    <p:tabView id="tabView" style="border: 0px;">
-
-                        <p:tab id="tab1" title="Personenverwaltung">
-                            <ui:include src="personmanagement2.xhtml"/>
-                        </p:tab>
-
-                        <p:tab id="tab2" title="Teamverwaltung">
-                            <ui:include src="teammanagement.xhtml"/>
-                        </p:tab>
-
-                        <p:tab id="tab3" title="Eventverwaltung">
-                            <ui:include src="eventmanagement.xhtml"/>
-                        </p:tab>
-
-                        <p:tab id="tab4" title="Ortsverwaltung">
-                            <ui:include src="locationmanagement.xhtml"/>
-                        </p:tab>
-                        
-                        <p:tab id="tab5" title="Teammitglieder">
-                            <ui:include src="membermanagement.xhtml"/>
-                        </p:tab>
-
-                    </p:tabView>
+                    <p:tabView id="tabView" style="border: 0px;" binding="#{tabBean.messagesTab}">
+                            <p:tab id="tab1" title="Personenverwaltung">
+                                <ui:include src="personmanagement2.xhtml"/>
+                            </p:tab>
+                            
+                            <p:tab id="tab2" title="Teamverwaltung">
+                                <ui:include src="teammanagement.xhtml"/>
+                            </p:tab>
+                            
+                            <p:tab id="tab3" title="Eventverwaltung">
+                                <ui:include src="eventmanagement.xhtml"/>
+                            </p:tab>
+                            
+                            <p:tab id="tab4" title="Ortsverwaltung">
+                                <ui:include src="locationmanagement.xhtml"/>
+                            </p:tab>
+                            
+                            <p:tab id="tab5" title="Teammitglieder">
+                                <ui:include src="membermanagement.xhtml"/>
+                            </p:tab>
+                            
+                        </p:tabView>
                 </p:layoutUnit>
-
+                
             </p:layout>
-
+            
         </h:body>
-
+        
     </f:view>
 </html>

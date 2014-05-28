@@ -6,7 +6,7 @@
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
         
-
+        
         <p:layout style="min-width:1200px;min-height:400px;">
             <p:layoutUnit position="west" resizable="true" size="700" minSize="40" style="border: 0px solid #000000;">
                 <b><h:outputText id="tab4Text" value="Willkommen bei der Ortsverwaltung"/></b>
@@ -42,7 +42,9 @@
                             <f:facet name="header">
                                 <h:outputText value=""/>
                             </f:facet>
-                            <h:commandButton value="Löschen" action="#{placeController.doDeletePlace(item.placeID)}"/>
+                            <h:commandButton value="Löschen" action="#{placeController.doDeletePlace(item.placeID)}">
+                                <f:actionListener binding="#{tabBean.someDecisionMethod(3)}" />
+                            </h:commandButton>
                         </p:column>
                     </p:dataTable>
                 </h:form>
@@ -54,15 +56,17 @@
                     <br/>
                     <br/>
                     <p:panelGrid columns="2" style="border: 0px solid #000000;">
-                        <p:outputLabel value="Location:" for="location" />
+                        <p:outputLabel value="Ort" for="location" />
                         <p:inputText id="location" value="#{placeController.place.location}" title="Location" />
                         <p:outputLabel value="Name:" for="name" />
                         <p:inputText id="name" value="#{placeController.place.name}" title="Name" />
-                        <p:outputLabel value="Description:" for="description" />
+                        <p:outputLabel value="Beschreibung" for="description"/>
                         <p:inputText id="description" value="#{placeController.place.description}" title="Description" />
                     </p:panelGrid>
                     <br/>
-                    <h:commandButton value="Speichern" action="#{placeController.doCreatePlace()}"/>
+                    <h:commandButton value="Speichern" action="#{placeController.doCreatePlace()}">
+                        <f:actionListener binding="#{tabBean.someDecisionMethod(3)}" />
+                    </h:commandButton>
                 </h:form>
                     
             </p:layoutUnit>

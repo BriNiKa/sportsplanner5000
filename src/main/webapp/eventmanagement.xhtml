@@ -33,12 +33,12 @@
                                 </f:facet>
                                 <h:outputText value="#{item.type}"/>
                             </p:column>
-                             <p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Datum"/>
                                 </f:facet>
-                                 <h:outputText value="#{item.sdate}">
-                             <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <h:outputText value="#{item.sdate}">
+                                    <f:convertDateTime pattern="dd.MM.yyyy" />
                                 </h:outputText>
                             </p:column>
                             <p:column>
@@ -47,7 +47,7 @@
                                 </f:facet>
                                 <h:outputText value="#{item.teamFromEvent.name}"/>
                             </p:column>
-                                <p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Schiedsrichter"/>
                                 </f:facet>
@@ -60,7 +60,9 @@
                                 <h:outputText value="#{item.placeFromEvent.name}"/>
                             </p:column>
                             <p:column>
-                                <h:commandButton action="#{eventController.doDeleteEvent(item.eventID)}" value="Löschen"/>
+                                <h:commandButton value="Löschen" action="#{eventController.doDeleteEvent(item.eventID)}">
+                                    <f:actionListener binding="#{tabBean.someDecisionMethod(2)}" />
+                                </h:commandButton>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -79,7 +81,7 @@
                             <p:outputLabel value="Eventart:" for="type" />
                             <p:inputText id="type" value="#{eventController.event.type}" title="Type" />
                             <p:outputLabel value="Datum:" for="sdate" />
-                            <p:calendar id="sdate" value="#{eventController.event.sdate}" locale="de" navigator="true" pattern="dd-MMM-yyyy"/>
+                            <p:calendar id="sdate" value="#{eventController.event.sdate}" locale="de" navigator="true" pattern="dd-MM-yyyy"/>
                             <p:outputLabel value="Team:" for="teamID" />
                             <p:selectOneMenu id="teamID" value="#{eventController.event.teamFromEvent}" converter="teamConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
@@ -95,14 +97,16 @@
                             <p:outputLabel value="Austragungsort:" for="placeID" />
                             <p:selectOneMenu id="placeID" value="#{eventController.event.placeFromEvent}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                
+                                    
                                 <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  
                                                itemValue="#{place}"/>
                             </p:selectOneMenu>
                         </p:panelGrid>
                         <br/>
                         <br/>
-                        <h:commandButton action="#{eventController.doCreateEvent()}" value="Speichern" />
+                        <h:commandButton value="Speichern" action="#{eventController.doCreateEvent()}">
+                            <f:actionListener binding="#{tabBean.someDecisionMethod(2)}" />
+                        </h:commandButton>
                     </h:form>
                 </f:view>
                     
