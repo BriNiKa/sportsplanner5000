@@ -8,6 +8,7 @@ package ch.brinika.sportsplanner5000.domain;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -49,11 +51,24 @@ public class Event implements Serializable {
     @Size(max = 45)
     @Column(name = "type")
     private String type;
-    @JoinTable(name = "Team_has_Event", joinColumns = {
-        @JoinColumn(name = "Event_eventID", referencedColumnName = "eventID")}, inverseJoinColumns = {
-        @JoinColumn(name = "Team_teamID", referencedColumnName = "teamID")})
-    @ManyToMany
-    private Collection<Team> teamCollection;
+    @Column(name = "sdate")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date sdate;
+    public void setSdate(Date sdate) {
+        this.sdate = sdate;
+    }
+
+    public Date getSdate() {
+        return sdate;
+    }
+    //@JoinTable(name = "Team_has_Event", joinColumns = {
+    //    @JoinColumn(name = "Event_eventID", referencedColumnName = "eventID")}, inverseJoinColumns = {
+    //    @JoinColumn(name = "Team_teamID", referencedColumnName = "teamID")})
+    //@ManyToMany
+    //private Collection<Team> teamCollection;
+    @JoinColumn(name = "Team_ID", referencedColumnName = "teamID")
+    @ManyToOne(optional = false)
+    private Team teamFromEvent;
     @JoinColumn(name = "Person_ID", referencedColumnName = "personID")
     @ManyToOne(optional = false)
     private Person personFromEvent;
@@ -91,7 +106,7 @@ public class Event implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-
+/*
     @XmlTransient
     public Collection<Team> getTeamCollection() {
         return teamCollection;
@@ -100,7 +115,7 @@ public class Event implements Serializable {
     public void setTeamCollection(Collection<Team> teamCollection) {
         this.teamCollection = teamCollection;
     }
-
+*/
     public Person getPersonFromEvent() {
         return personFromEvent;
     }
@@ -108,6 +123,16 @@ public class Event implements Serializable {
     public void setPersonFromEvent(Person personFromEvent) {
         this.personFromEvent = personFromEvent;
     }
+    
+        public Team getTeamFromEvent() {
+        return teamFromEvent;
+    }
+
+    public void setTeamFromEvent(Team teamFromEvent) {
+        this.teamFromEvent = teamFromEvent;
+    }
+    
+    
 
     public Place getPlaceFromEvent() {
         return placeFromEvent;

@@ -22,7 +22,9 @@
                             <f:facet name="header">
                                 <h:outputText value=""/>
                             </f:facet>
-                            <h:commandButton value="Löschen" action="#{teamController.doDeleteTeam(item.teamID)}"/>
+                            <h:commandButton value="Löschen" action="#{teamController.doDeleteTeam(item.teamID)}">
+                                    <f:actionListener binding="#{tabBean.someDecisionMethod(1)}" />
+                                </h:commandButton>
                         </p:column>
                     </p:dataTable>
                 </h:form>
@@ -40,7 +42,9 @@
                     </p:panelGrid>
                     <br/>
                     <br/>
-                    <h:commandButton value="Speichern" action="#{teamController.doCreateTeam()}"/>
+                    <h:commandButton value="Speichern" action="#{teamController.doCreateTeam()}">
+                                    <f:actionListener binding="#{tabBean.someDecisionMethod(1)}" />
+                                </h:commandButton>
                 </h:form>
                     
             </p:layoutUnit>
