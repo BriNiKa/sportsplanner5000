@@ -17,42 +17,18 @@ import javax.ejb.EJB;
 
 /**
  *
- * @author Andreas
+ * @author Michael
  */
 public class MemberController {
     
     private Person person = new Person();
     private Team team = new Team();
-    private Collection<Person> memberList = new ArrayList<Person>();
+    private Collection<Person> memberList = new ArrayList<>();
 
     @EJB
     private PersonEJB personEJB;
     @EJB
     private TeamEJB teamEJB;
-
-    public void showMember() {
-        memberList = teamEJB.getTeamMember(team);
-
-    }
-    
-    public void setselectedPerson(long id){
-    
-        person = personEJB.findPersonById(id);
-    }
-    
-    public void addPerson(){
-        personEJB.createPerson(person);
-        memberList = personEJB.findPersons();
-    }
-    
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-    
 
     public Person getPerson() {
         return person;
@@ -62,20 +38,35 @@ public class MemberController {
         this.person = person;
     }
 
-    public Collection<Person> getPersonList() {
-        memberList = personEJB.findPersons();
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Collection<Person> getMemberList() {
         return memberList;
     }
 
-    public void setPersonList(List<Person> personList) {
-        this.memberList = personList;
+    public void setMemberList(Collection<Person> memberList) {
+        this.memberList = memberList;
     }
 
-    public PersonEJB getPersonEJB() {
-        return personEJB;
+    public TeamEJB getTeamEJB() {
+        return teamEJB;
     }
 
-    public void setPersonEJB(PersonEJB personEJB) {
-        this.personEJB = personEJB;
+    public void setTeamEJB(TeamEJB teamEJB) {
+        this.teamEJB = teamEJB;
     }
+    public void addNewMember(Person person) {
+        getMemberList().add(person);
+        //team.setPersonCollection(memberList);
+        team.setPersonCollection(memberList);
+        teamEJB.updateTeam(team);
+        //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
+    }
+
 }

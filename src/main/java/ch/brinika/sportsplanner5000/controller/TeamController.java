@@ -71,4 +71,13 @@ public class TeamController {
     public void setTeamEJB(TeamEJB teamEJB) {
         this.teamEJB = teamEJB;
     }
+    
+     public void addNewMember(Person person) {
+        System.out.println(person.getPrename());   
+        Collection<Person> personCollection = null;
+        personCollection.add(person);
+        team.setPersonCollection(personCollection);
+        teamEJB.updateTeam(team);
+        //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
+    }
 }

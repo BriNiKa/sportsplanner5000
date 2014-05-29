@@ -10,17 +10,15 @@
             <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
                 <h:form>
                     
-                    <p:selectOneMenu value="#{personController.team}" onchange="">
-                        <f:selectItem itemLabel="Select One" itemValue="" />
+                    <p:selectOneMenu value="#{teamController.team}" onchange="#{teamController.setTeam(team)}">
                         <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}">
-                            
                         </f:selectItems>
                     </p:selectOneMenu>
                     
                 </h:form>
                 <h:form>
                     
-                    <p:dataTable paginator="true" rows="8" value="#{personController.personList}" var="item">
+                    <p:dataTable paginator="true" rows="8" value="#{teamController.team.personCollection}" var="item">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Prename"/>
@@ -83,7 +81,8 @@
                             </f:facet>
                             
                             <h:commandButton 
-                                value="Hinzufügen" 
+                                action="#{teamController.addNewMember(item)}"
+                                value="Hinzufügen"
                                 />
 
                         </p:column>

@@ -34,7 +34,7 @@ public class TeamEJB {
         return query.getResultList();
     }
     
-    public Team findTeamById(Long id) {
+    public Team findTeamById(int id) {
         return em.find(Team.class, id);
     }
     
@@ -52,9 +52,5 @@ public class TeamEJB {
     {
         return em.merge(team);
     }
-    public Collection<Person> getTeamMember(Team team)
-    {
-        return findTeamById((long)team.getTeamID()).getPersonCollection();
-        
-    }
+
 }

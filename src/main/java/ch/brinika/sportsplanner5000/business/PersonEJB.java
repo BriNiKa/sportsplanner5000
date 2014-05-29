@@ -34,7 +34,7 @@ public class PersonEJB {
         return query.getResultList();
     }
     
-    public Person findPersonById(Long id) {
+    public Person findPersonById(int id) {
         return em.find(Person.class, id);
     }
     
