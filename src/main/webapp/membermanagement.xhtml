@@ -10,24 +10,22 @@
             <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
                 <h:form>
                     
-                    <p:selectOneMenu value="#{teamController.team}" onchange="#{teamController.setTeam(team)}">
-                        <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}">
-                        </f:selectItems>
+                    <p:selectOneMenu id="teamChose" value="#{teamController.team.teamID}">
+                        <p:ajax listener="#{teamController.reloadTeam()}" update="dataTabelle" />
+                        <f:selectItem itemLabel="Team auswählen" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" itemValue="#{team.teamID}"/>
                     </p:selectOneMenu>
-                    
-                </h:form>
-                <h:form>
-                    
-                    <p:dataTable paginator="false" rows="8" value="#{teamController.team.personCollection}" var="item" style="width:300px;">
+
+                    <p:dataTable id="dataTabelle" paginator="false" rows="8" value="#{teamController.team.personCollection}" var="item" style="width:300px;">
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Prename"/>
+                                <h:outputText value="Vorname"/>
                             </f:facet>
                             <h:outputText value="#{item.prename}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Surname"/>
+                                <h:outputText value="Nachname"/>
                             </f:facet>
                             <h:outputText value="#{item.surname}"/>
                         </p:column>
@@ -37,7 +35,7 @@
                             
                             <h:commandButton
                                 value="Löschen" 
-                                action="#{personController.doCreatePerson()}"/>
+                                action="#{teamController.doDeleteFromTeam(item)}"/>
 
                         </p:column>
                     </p:dataTable>

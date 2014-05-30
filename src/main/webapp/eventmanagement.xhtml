@@ -85,21 +85,18 @@
                             <p:outputLabel value="Team:" for="teamID" />
                             <p:selectOneMenu id="teamID" value="#{eventController.event.teamFromEvent}" converter="teamConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" 
-                                               itemValue="#{team}"/>
+                                <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" itemValue="#{team}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="Schiedsrichter:" for="personID" />
                             <p:selectOneMenu id="personID" value="#{eventController.event.personFromEvent}" converter="personConverter" required="true" requiredMessage="The PersonID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{personController.personList}" var="person" itemLabel="#{person.prename}" 
-                                               itemValue="#{person}"/>
+                                <f:selectItems value="#{personController.personList}" var="person" itemLabel="#{person.prename}" itemValue="#{person}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="Austragungsort:" for="placeID" />
                             <p:selectOneMenu id="placeID" value="#{eventController.event.placeFromEvent}" converter="placeConverter" required="true" requiredMessage="The PlaceID field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                     
-                                <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  
-                                               itemValue="#{place}"/>
+                                <f:selectItems value="#{placeController.placeList}" var="place" itemLabel="#{place.name}"  itemValue="#{place}"/>
                             </p:selectOneMenu>
                         </p:panelGrid>
                         <br/>
