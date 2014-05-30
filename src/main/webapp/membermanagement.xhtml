@@ -18,7 +18,7 @@
                 </h:form>
                 <h:form>
                     
-                    <p:dataTable paginator="true" rows="8" value="#{teamController.team.personCollection}" var="item">
+                    <p:dataTable paginator="false" rows="8" value="#{teamController.team.personCollection}" var="item" style="width:300px;">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Prename"/>
@@ -45,7 +45,7 @@
             </p:layoutUnit>
             <p:layoutUnit position="center" resizable="true" size="400">
                 <h:form>
-                    <p:dataTable paginator="true" rows="8" value="#{personController.personList}" var="item">
+                    <p:dataTable paginator="false" rows="8" value="#{personController.personList}" var="item">
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Prename"/>

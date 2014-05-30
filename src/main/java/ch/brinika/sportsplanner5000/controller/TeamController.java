@@ -53,6 +53,8 @@ public class TeamController {
 
     public void setTeam(Team  team) {
         this.team = team;
+        System.out.println("WOLOLOLOLOLOLOLOLOLLOLO");
+        System.out.println(this.team.getName());
     }
 
     public List<Team> getTeamList() {
@@ -73,11 +75,15 @@ public class TeamController {
     }
     
      public void addNewMember(Person person) {
-        System.out.println(person.getPrename());   
-        Collection<Person> personCollection = null;
+        System.out.println("Person: " + person.getPrename());   
+        System.out.println("Team: " + this.team.getName());
+        
+        Collection<Person> personCollection = this.team.getPersonCollection();
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         personCollection.add(person);
-        team.setPersonCollection(personCollection);
-        teamEJB.updateTeam(team);
+        
+        this.team.setPersonCollection(personCollection);
+        teamEJB.updateTeam(this.team);
         //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
     }
 }
