@@ -21,8 +21,8 @@ import javax.ejb.EJB;
  */
 public class TeamController {
 
-    private Team team = new Team();
-    private List<Team> teamList  = new ArrayList<>();
+    private Team team;
+    private List<Team> teamList  = new ArrayList<Team>();
     
     @EJB
     private TeamEJB teamEJB;
@@ -46,14 +46,13 @@ public class TeamController {
         teamEJB.deleteTeam(id);
         teamList = teamEJB.findTeams();
     }
-   
+    
     public Team getTeam() {
         return team;
     }
 
     public void setTeam(Team  team) {
         this.team = team;
-        System.out.println("WOLOLOLOLOLOLOLOLOLLOLO");
     }
 
     public List<Team> getTeamList() {
@@ -72,34 +71,30 @@ public class TeamController {
     public void setTeamEJB(TeamEJB teamEJB) {
         this.teamEJB = teamEJB;
     }
-    
-     public void addNewMember(Person person) {
-        System.out.println("Person: " + person.getPrename());   
-        System.out.println("Team: " + team.getName());
-        
-//        Collection<Person> personCollection = this.team.getPersonCollection();
-//        System.out.println("----------------------------------------------------------------------------------------------------------");
-//        personCollection.add(person);
-//        
-//        this.team.setPersonCollection(personCollection);
-//        teamEJB.updateTeam(this.team);
+    public void lueg(Person person) {
+        System.out.println(person.getPrename());
     }
-     
-      public void doDeleteFromTeam(Person person) {
-        System.out.println("Person: " + person.getPrename());   
-        System.out.println("Team: " + team.getName());
-        
+    public void lueg2() {
+//        System.out.println(person.getPrename());
+    }
+     public void addNewMember(Person person) {
+
         Collection<Person> personCollection = this.team.getPersonCollection();
-        System.out.println("----------------------------------------------------------------------------------------------------------");
-        personCollection.remove(person);
+        personCollection.add(person);
         
         this.team.setPersonCollection(personCollection);
         teamEJB.updateTeam(this.team);
+        //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
     }
-     
-     public void reloadTeam(){
-         team = teamEJB.findTeamById(this.team.getTeamID());
-         System.out.println("ID: " + this.team.getTeamID() + " Name: " +this.team.getName());
-     }
-     
+     public void removeMemberFromTeam(Person person) {
+         System.out.println(person.getPrename());
+        System.out.println("Bla");
+        Collection<Person> personCollection = this.team.getPersonCollection();
+        boolean b = personCollection.remove(person);
+        System.out.println(b);
+        
+        this.team.setPersonCollection(personCollection);
+        teamEJB.updateTeam(this.team);
+        //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
+    }
 }

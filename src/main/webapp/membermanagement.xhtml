@@ -5,44 +5,47 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
-        <h:messages/>
         <p:layout style="min-width:1200px;min-height:400px;">
-            <p:layoutUnit position="west" resizable="true" size="400" minSize="40">
-                <h:form>
-                    
-                    <p:selectOneMenu id="teamChose" value="#{teamController.team.teamID}">
-                        <p:ajax listener="#{teamController.reloadTeam()}" update="dataTabelle" />
-                        <f:selectItem itemLabel="Team auswählen" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" itemValue="#{team.teamID}"/>
-                    </p:selectOneMenu>
+            <h:form>
+                <p:layoutUnit position="west" resizable="true" style="border: 0px solid #000000; width: 300px;">
+                    <b><h:outputText id="tab5Text" value="Team / Personen"/></b>
+                    <br/>
+                    <br/>  
+                    <p:selectOneMenu id="teamChose" value="#{teamController.team}" converter="teamConverterForMembermanagement">
+                        <p:ajax listener="#{teamController.lueg2()}" update="memberTable" />
+                        <f:selectItem itemLabel="Bitte wählen" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{teamController.teamList}" var="team" itemLabel="#{team.name}" itemValue="#{team.name}" >
+                        </f:selectItems> 
+                    </p:selectOneMenu>         
 
-                    <p:dataTable id="dataTabelle" paginator="false" rows="8" value="#{teamController.team.personCollection}" var="item" style="width:300px;">
+                    <p:dataTable id="memberTable" paginator="false" rows="8" value="#{teamController.team.personCollection}" var="item2" style="width: 300px;">
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Vorname"/>
+                                <h:outputText value="Prename"/>
                             </f:facet>
-                            <h:outputText value="#{item.prename}"/>
+                            <h:outputText value="#{item2.prename}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nachname"/>
+                                <h:outputText value="Surname"/>
                             </f:facet>
-                            <h:outputText value="#{item.surname}"/>
+                            <h:outputText value="#{item2.surname}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
-                            
-                            <h:commandButton
-                                value="Löschen" 
-                                action="#{teamController.doDeleteFromTeam(item)}"/>
-
+                            <h:commandButton action="#{teamController.removeMemberFromTeam(item2)}" value="Entfernen" >
+                                <f:actionListener binding="#{tabBean.someDecisionMethod(4)}" />
+                                <p:ajax listener="#{teamController.lueg(item2)}" update="memberTable" />
+                            </h:commandButton>
                         </p:column>
                     </p:dataTable>
-                </h:form>
-            </p:layoutUnit>
-            <p:layoutUnit position="center" resizable="true" size="400">
-                <h:form>
+
+                </p:layoutUnit>
+                <p:layoutUnit position="center" resizable="true" style="border: 0px solid #000000; width: 800px;">
+                    <b><h:outputText id="tab5Text1" value="Personen zu Team hinzufügen"/></b>
+                    <br/>
+                    <br/>
                     <p:dataTable paginator="false" rows="8" value="#{personController.personList}" var="item">
                         <p:column>
                             <f:facet name="header">
@@ -77,16 +80,16 @@
                         <p:column>
                             <f:facet name="header">
                             </f:facet>
-                            
-                            <h:commandButton 
-                                action="#{teamController.addNewMember(item)}"
-                                value="Hinzufügen"
-                                />
+                            <h:commandButton action="#{teamController.addNewMember(item)}" value="Hinzufügen" >
+                                <f:actionListener binding="#{tabBean.someDecisionMethod(4)}" />
+                            </h:commandButton>
 
                         </p:column>
                     </p:dataTable>
-                </h:form>
-            </p:layoutUnit>
+
+
+                </p:layoutUnit>
+            </h:form>
         </p:layout> 
     </h:panelGrid>
 </ui:composition>
