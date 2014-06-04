@@ -21,7 +21,7 @@ import javax.ejb.EJB;
  */
 public class TeamController {
 
-    private Team team;
+    private Team team = new Team();
     private List<Team> teamList  = new ArrayList<Team>();
     
     @EJB
