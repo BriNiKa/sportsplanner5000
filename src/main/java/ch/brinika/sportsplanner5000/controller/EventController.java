@@ -8,6 +8,8 @@ package ch.brinika.sportsplanner5000.controller;
 
 import ch.brinika.sportsplanner5000.business.EventEJB;
 import ch.brinika.sportsplanner5000.domain.Event;
+import com.lowagie.text.Document;
+import com.lowagie.text.PageSize;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -104,4 +106,12 @@ public class EventController {
         this.eventEJB = eventEJB;
     }
     
+     /**
+     * Diese Methode setzt die zu exportierde PDF-Seite auf Querformat
+     * @param document zu exportierendes Dokument
+     */
+    public void preProcessPDF(Object document) {
+        Document doc = (Document) document;
+        doc.setPageSize(PageSize.A4.rotate());
+    }
 }

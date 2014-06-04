@@ -16,12 +16,6 @@
                     <p:dataTable value="#{placeController.placeList}" var="item" style="width:300px;">
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="PlaceID"/>
-                            </f:facet>
-                            <h:outputText value="#{item.placeID}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="Location"/>
                             </f:facet>
                             <h:outputText value="#{item.location}"/>
@@ -61,7 +55,7 @@
                         <p:outputLabel value="Name:" for="name" />
                         <p:inputText id="name" value="#{placeController.place.name}" title="Name" />
                         <p:outputLabel value="Beschreibung" for="description"/>
-                        <p:inputText id="description" value="#{placeController.place.description}" title="Description" />
+                        <p:inputText id="description" size="50" value="#{placeController.place.description}" title="Description" />
                     </p:panelGrid>
                     <br/>
                     <h:commandButton value="Speichern" action="#{placeController.doCreatePlace()}">

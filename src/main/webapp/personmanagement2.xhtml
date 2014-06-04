@@ -16,13 +16,6 @@
                         <p:dataTable id="persons" var="anzeigen" paginator="true" rows="15"  value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
                             
                             <p:ajax event="cellEdit" listener="#{personController.onCellEdit}"/>
-                                
-                            <p:column headerText="ID">
-                                <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{anzeigen.personID}" /></f:facet>
-                                    <f:facet name="input"><p:inputText value="#{personController.person.personID}" style="width:96%"/></f:facet>
-                                </p:cellEditor>
-                            </p:column>
                             <p:column headerText="Vorname">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{anzeigen.prename}" /></f:facet>

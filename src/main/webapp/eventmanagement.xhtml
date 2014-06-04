@@ -14,13 +14,7 @@
                 <br/>
                 <f:view>
                     <h:form>
-                        <p:dataTable value="#{eventController.eventList}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="EventID"/>
-                                </f:facet>
-                                <h:outputText value="#{item.eventID}"/>
-                            </p:column>
+                        <p:dataTable id="myData" value="#{eventController.eventList}" var="item">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Name"/>
@@ -65,6 +59,12 @@
                                 </h:commandButton>
                             </p:column>
                         </p:dataTable>
+                        <p:panel header="Datentabelle als PDF exportieren">
+                            <h:commandLink>
+                                <h:outputText value="PDF generieren"/>
+                                <p:dataExporter type="pdf" target="myData" fileName="mypdf" preProcessor="#{eventController.preProcessPDF}"/>
+                            </h:commandLink>
+                        </p:panel>
                     </h:form>
                 </f:view>
 

@@ -31,6 +31,9 @@ public class TeamController {
     @EJB
     private PersonEJB personEJB;
 
+    /**
+     *
+     */
     public void doCreateTeam()
     {
         teamEJB.createTeam(team);
@@ -38,50 +41,95 @@ public class TeamController {
         //return "Team_created";
     }
     
-     public void doUpdateTeam()
+    /**
+     *
+     */
+    public void doUpdateTeam()
     {
         teamEJB.updateTeam(team);
         teamList = teamEJB.findTeams();
         //return "Team_updated";
     }
      
-       public void doDeleteTeam(int id)
+    /**
+     *
+     * @param id
+     */
+    public void doDeleteTeam(int id)
     {
         teamEJB.deleteTeam(id);
         teamList = teamEJB.findTeams();
     }
     
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
 
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team  team) {
         this.team = team;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Team> getTeamList() {
         teamList = teamEJB.findTeams();
         return teamList;
     }
 
+    /**
+     *
+     * @param teamList
+     */
     public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
     }
 
+    /**
+     *
+     * @return
+     */
     public TeamEJB getTeamEJB() {
         return teamEJB;
     }
 
+    /**
+     *
+     * @param teamEJB
+     */
     public void setTeamEJB(TeamEJB teamEJB) {
         this.teamEJB = teamEJB;
     }
+
+    /**
+     *
+     * @param person
+     */
     public void lueg(Person person) {
         System.out.println(person.getPrename());
     }
+
+    /**
+     *
+     */
     public void lueg2() {
 //        System.out.println(person.getPrename());
     }
-     public void addNewMember(Person person) {
+
+    /**
+     *
+     * @param person
+     */
+    public void addNewMember(Person person) {
          
         Team teamToSave = teamEJB.findTeamById(this.team.getTeamID());
         
@@ -93,7 +141,12 @@ public class TeamController {
         team = teamToSave;
         //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
     }
-     public void removeMemberFromTeam(Person person) {
+
+    /**
+     *
+     * @param person
+     */
+    public void removeMemberFromTeam(Person person) {
          System.out.println(person.getPrename());
         System.out.println("Bla");
         Collection<Person> personCollection = this.team.getPersonCollection();
