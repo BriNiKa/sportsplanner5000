@@ -54,10 +54,19 @@ public class Event implements Serializable {
     @Column(name = "sdate")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date sdate;
+
+    /**
+     *
+     * @param sdate
+     */
     public void setSdate(Date sdate) {
         this.sdate = sdate;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getSdate() {
         return sdate;
     }
@@ -76,33 +85,64 @@ public class Event implements Serializable {
     @ManyToOne(optional = false)
     private Place placeFromEvent;
 
+    /**
+     *
+     */
     public Event() {
     }
 
+    /**
+     *
+     * @param eventID
+     */
     public Event(Integer eventID) {
         this.eventID = eventID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getEventID() {
         return eventID;
     }
     
+    /**
+     *
+     * @param eventID
+     */
     public void setEventID(Integer eventID) {
         this.eventID = eventID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(String type) {
         this.type = type;
     }
@@ -116,28 +156,52 @@ public class Event implements Serializable {
         this.teamCollection = teamCollection;
     }
 */
+
+    /**
+     *
+     * @return
+     */
+    
     public Person getPersonFromEvent() {
         return personFromEvent;
     }
 
+    /**
+     *
+     * @param personFromEvent
+     */
     public void setPersonFromEvent(Person personFromEvent) {
         this.personFromEvent = personFromEvent;
     }
     
-        public Team getTeamFromEvent() {
+    /**
+     *
+     * @return
+     */
+    public Team getTeamFromEvent() {
         return teamFromEvent;
     }
 
+    /**
+     *
+     * @param teamFromEvent
+     */
     public void setTeamFromEvent(Team teamFromEvent) {
         this.teamFromEvent = teamFromEvent;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public Place getPlaceFromEvent() {
         return placeFromEvent;
     }
 
+    /**
+     *
+     * @param placeFromEvent
+     */
     public void setPlaceFromEvent(Place placeFromEvent) {
         this.placeFromEvent = placeFromEvent;
     }

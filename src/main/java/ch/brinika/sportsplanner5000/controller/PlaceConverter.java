@@ -24,6 +24,13 @@ public class PlaceConverter implements Converter{
     @EJB
     PlaceEJB placeEJB;
     
+    /**
+     *
+     * @param context
+     * @param component
+     * @param value
+     * @return
+     */
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value != null && value.trim().length() > 0) {
@@ -41,6 +48,13 @@ public class PlaceConverter implements Converter{
         return null;
     }
     
+    /**
+     *
+     * @param context
+     * @param component
+     * @param value
+     * @return
+     */
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if(value != null) {

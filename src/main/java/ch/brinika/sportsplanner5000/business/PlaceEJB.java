@@ -26,16 +26,30 @@ public class PlaceEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    public List<Place> findPlaces(){
+
+    /**
+     *
+     * @return
+     */
+        public List<Place> findPlaces(){
         return em.createNamedQuery("Place.findAll").getResultList();
     }
     
+    /**
+     *
+     * @param place
+     * @return
+     */
     public Place createPlace(Place place)
     {
         em.persist(place);
         return place;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void deletePlace(int id)
     {
         
@@ -43,6 +57,10 @@ public class PlaceEJB {
         em.remove(em.merge(place));
     }
     
+    /**
+     *
+     * @param place
+     */
     public void updatePlace(Place place)
     {
         em.merge(place);

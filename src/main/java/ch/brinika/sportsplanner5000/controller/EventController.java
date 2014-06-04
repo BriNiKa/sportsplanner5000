@@ -24,6 +24,9 @@ public class EventController {
     @EJB
     private EventEJB eventEJB;
 
+    /**
+     *
+     */
     public void doCreateEvent()
     {
         eventEJB.createEvent(event);
@@ -31,41 +34,72 @@ public class EventController {
        // return "Event_Created";
     }
     
-     public void doUpdateEvent()
+    /**
+     *
+     */
+    public void doUpdateEvent()
     {
         eventEJB.updateEvent(event);
         eventList = eventEJB.findEvents();
        // return "Event_updated";
     }
      
-       public void doDeleteEvent(int id)
+    /**
+     *
+     * @param id
+     */
+    public void doDeleteEvent(int id)
     {
         eventEJB.deleteEvent(id);
         eventList = eventEJB.findEvents();
         //return "Event_deleted";
     }
     
+    /**
+     *
+     * @return
+     */
     public Event getEvent() {
         return event;
     }
 
+    /**
+     *
+     * @param event
+     */
     public void setEvent(Event  event) {
         this.event = event;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Event> getEventList() {
         eventList = eventEJB.findEvents();
         return eventList;
     }
 
+    /**
+     *
+     * @param eventList
+     */
     public void setEventList(List<Event> eventList) {
         this.eventList = eventList;
     }
 
+    /**
+     *
+     * @return
+     */
     public EventEJB getEventEJB() {
         return eventEJB;
     }
 
+    /**
+     *
+     * @param eventEJB
+     */
     public void setEventEJB(EventEJB eventEJB) {
         this.eventEJB = eventEJB;
     }

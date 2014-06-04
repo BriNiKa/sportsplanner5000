@@ -28,28 +28,54 @@ public class PersonEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    public List<Person> findPersons()
+
+    /**
+     *
+     * @return
+     */
+        public List<Person> findPersons()
     {
         TypedQuery<Person> query = em.createNamedQuery("Person.findAll", Person.class);
         return query.getResultList();
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Person findPersonById(int id) {
         return em.find(Person.class, id);
     }
     
+    /**
+     *
+     * @param person
+     * @return
+     */
     public Person createPerson(Person person)
     {
         em.persist(person);
         return person;
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String deletePerson(int id)
     {
         Person person = em.find(Person.class, id);
         em.remove(em.merge(person));
         return ("Person deleted");
     }
+
+    /**
+     *
+     * @param person
+     * @return
+     */
     public Person updatePerson(Person person)
     {
         return em.merge(person);

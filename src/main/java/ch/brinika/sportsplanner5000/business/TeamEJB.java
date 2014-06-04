@@ -29,28 +29,56 @@ public class TeamEJB {
     EntityManager em;
     
     // Methods -------------------------------------------------------------
-    public List<Team> findTeams() {
+
+    /**
+     *
+     * @return
+     */
+        public List<Team> findTeams() {
         TypedQuery<Team> query = em.createNamedQuery("Team.findAll", Team.class);
         return query.getResultList();
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Team findTeamById(int id) {
         return em.find(Team.class, id);
     }
     
+    /**
+     *
+     * @param team
+     * @return
+     */
     public Team createTeam(Team team)
     {
         em.persist(team);
         return team;
     }
+
+    /**
+     *
+     * @param id
+     */
     public void deleteTeam(int id)
     {
         Team team = em.find(Team.class, id);
         em.remove(em.merge(team));
     }
+
+    /**
+     *
+     * @param team
+     * @return
+     */
     public Team updateTeam(Team team)
     {
-        return em.merge(team);
+        em.merge(team);
+        em.flush();
+        return team;
     }
 
 }

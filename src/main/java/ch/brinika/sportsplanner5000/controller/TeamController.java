@@ -6,9 +6,11 @@
 
 package ch.brinika.sportsplanner5000.controller;
 
+import ch.brinika.sportsplanner5000.business.PersonEJB;
 import ch.brinika.sportsplanner5000.business.TeamEJB;
 import ch.brinika.sportsplanner5000.domain.Person;
 import ch.brinika.sportsplanner5000.domain.Team;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,6 +28,8 @@ public class TeamController {
     
     @EJB
     private TeamEJB teamEJB;
+    @EJB
+    private PersonEJB personEJB;
 
     public void doCreateTeam()
     {
@@ -78,12 +82,15 @@ public class TeamController {
 //        System.out.println(person.getPrename());
     }
      public void addNewMember(Person person) {
-
-        Collection<Person> personCollection = this.team.getPersonCollection();
-        personCollection.add(person);
+         
+        Team teamToSave = teamEJB.findTeamById(this.team.getTeamID());
         
-        this.team.setPersonCollection(personCollection);
-        teamEJB.updateTeam(this.team);
+        Collection<Person> personCollection = teamToSave.getPersonCollection();
+        
+        personCollection.add(person);
+        teamToSave.setPersonCollection(personCollection);
+        teamEJB.updateTeam(teamToSave);
+        team = teamToSave;
         //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
     }
      public void removeMemberFromTeam(Person person) {

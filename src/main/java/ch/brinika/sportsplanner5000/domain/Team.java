@@ -48,25 +48,48 @@ public class Team implements Serializable {
     @Column(name = "name")
     private String name;
 
+    /**
+     *
+     */
     public Team() {
     }
 
+    /**
+     *
+     * @param teamID
+     */
     public Team(Integer teamID) {
         this.teamID = teamID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getTeamID() {
         return teamID;
     }
 
+    /**
+     *
+     * @param teamID
+     */
     public void setTeamID(Integer teamID) {
         this.teamID = teamID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -96,20 +119,36 @@ public class Team implements Serializable {
         return "ch.brinika.sportsplanner5000.domain.Team[ teamID=" + teamID + " ]";
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Person> getPersonCollection() {
         return personCollection;
     }
 
+    /**
+     *
+     * @param personCollection
+     */
     public void setPersonCollection(Collection<Person> personCollection) {
         this.personCollection = personCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Event> getEventCollection() {
         return eventCollection;
     }
 
+    /**
+     *
+     * @param eventCollection
+     */
     public void setEventCollection(Collection<Event> eventCollection) {
         this.eventCollection = eventCollection;
     }

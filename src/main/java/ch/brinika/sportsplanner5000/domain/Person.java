@@ -65,83 +65,155 @@ public class Person implements Serializable {
     @Size(max = 45)
     @Column(name = "phone")
     private String phone;
+    @ManyToMany
     @JoinTable(name = "Team_has_Person", joinColumns = {
         @JoinColumn(name = "Person_ID", referencedColumnName = "personID")}, inverseJoinColumns = {
         @JoinColumn(name = "Team_ID", referencedColumnName = "teamID")})
-    @ManyToMany
+    
     private Collection<Team> teamCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personFromEvent")
     private Collection<Event> eventCollection;
 
+    /**
+     *
+     */
     public Person() {
     }
 
+    /**
+     *
+     * @param personID
+     */
     public Person(Integer personID) {
         this.personID = personID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getPersonID() {
         return personID;
     }
 
+    /**
+     *
+     * @param personID
+     */
     public void setPersonID(Integer personID) {
         this.personID = personID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrename() {
         return prename;
     }
 
+    /**
+     *
+     * @param prename
+     */
     public void setPrename(String prename) {
         this.prename = prename;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSurname() {
         return surname;
     }
 
+    /**
+     *
+     * @param surname
+     */
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     *
+     * @param phone
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Team> getTeamCollection() {
         return teamCollection;
     }
 
+    /**
+     *
+     * @param teamCollection
+     */
     public void setTeamCollection(Collection<Team> teamCollection) {
         this.teamCollection = teamCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Event> getEventCollection() {
         return eventCollection;
     }
 
+    /**
+     *
+     * @param eventCollection
+     */
     public void setEventCollection(Collection<Event> eventCollection) {
         this.eventCollection = eventCollection;
     }

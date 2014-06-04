@@ -26,16 +26,30 @@ public class EventEJB {
     EntityManager em;
     
      // Methods -------------------------------------------------------------
-    public List<Event> findEvents(){
+
+    /**
+     *
+     * @return
+     */
+        public List<Event> findEvents(){
         return em.createNamedQuery("Event.findAll").getResultList();
     }
     
+    /**
+     *
+     * @param event
+     * @return
+     */
     public Event createEvent(Event event)
     {
         em.persist(event);
         return event;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void deleteEvent(int id)
     {
         Event event = em.find(Event.class, id);
@@ -43,6 +57,11 @@ public class EventEJB {
         // return ("Event deleted");
     }
     
+    /**
+     *
+     * @param event
+     * @return
+     */
     public String updateEvent(Event event)
     {
         em.merge(event);

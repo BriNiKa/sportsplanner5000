@@ -24,6 +24,13 @@ public class TeamConverterForMembermanagement implements Converter{
     @EJB
     TeamEJB teamEJB;
 
+    /**
+     *
+     * @param context
+     * @param component
+     * @param value
+     * @return
+     */
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if(value != null && value.trim().length() > 0) {
@@ -41,6 +48,13 @@ public class TeamConverterForMembermanagement implements Converter{
         return null;
     }
 
+    /**
+     *
+     * @param context
+     * @param component
+     * @param value
+     * @return
+     */
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
            if(value != null) {

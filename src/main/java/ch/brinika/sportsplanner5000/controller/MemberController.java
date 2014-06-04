@@ -30,37 +30,74 @@ public class MemberController {
     @EJB
     private TeamEJB teamEJB;
 
+    /**
+     *
+     * @return
+     */
     public Person getPerson() {
         return person;
     }
 
+    /**
+     *
+     * @param person
+     */
     public void setPerson(Person person) {
         this.person = person;
     }
 
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
 
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }
 
+    /**
+     *
+     * @return
+     */
     public Collection<Person> getMemberList() {
         return memberList;
     }
 
+    /**
+     *
+     * @param memberList
+     */
     public void setMemberList(Collection<Person> memberList) {
         this.memberList = memberList;
     }
 
+    /**
+     *
+     * @return
+     */
     public TeamEJB getTeamEJB() {
         return teamEJB;
     }
 
+    /**
+     *
+     * @param teamEJB
+     */
     public void setTeamEJB(TeamEJB teamEJB) {
         this.teamEJB = teamEJB;
     }
+
+    /**
+     *
+     * @param person
+     */
     public void addNewMember(Person person) {
         getMemberList().add(person);
         //team.setPersonCollection(memberList);

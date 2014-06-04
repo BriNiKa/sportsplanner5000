@@ -55,50 +55,97 @@ public class Place implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "placeFromEvent")
     private Collection<Event> eventCollection;
 
+    /**
+     *
+     */
     public Place() {
     }
 
+    /**
+     *
+     * @param placeID
+     */
     public Place(Integer placeID) {
         this.placeID = placeID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getPlaceID() {
         return placeID;
     }
 
+    /**
+     *
+     * @param placeID
+     */
     public void setPlaceID(Integer placeID) {
         this.placeID = placeID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     *
+     * @param location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<Event> getEventCollection() {
         return eventCollection;
     }
 
+    /**
+     *
+     * @param eventCollection
+     */
     public void setEventCollection(Collection<Event> eventCollection) {
         this.eventCollection = eventCollection;
     }

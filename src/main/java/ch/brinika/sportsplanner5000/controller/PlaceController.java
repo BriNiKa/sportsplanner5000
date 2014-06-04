@@ -24,6 +24,9 @@ public class PlaceController {
     @EJB
     private PlaceEJB placeEJB;
 
+    /**
+     *
+     */
     public void doCreatePlace()
     {
         placeEJB.createPlace(place);
@@ -31,41 +34,72 @@ public class PlaceController {
         //return "Place_created";
     }
     
-     public void doUpdatePlace()
+    /**
+     *
+     */
+    public void doUpdatePlace()
     {
         placeEJB.updatePlace(place);
         placeList = placeEJB.findPlaces();
         //return "Place_updated";
     }
      
-       public void doDeletePlace(int id)
+    /**
+     *
+     * @param id
+     */
+    public void doDeletePlace(int id)
     {
         placeEJB.deletePlace(id);
         placeList = placeEJB.findPlaces();
         //return "Place_updated";
     }
     
+    /**
+     *
+     * @return
+     */
     public Place getPlace() {
         return place;
     }
 
+    /**
+     *
+     * @param place
+     */
     public void setPlace(Place  place) {
         this.place = place;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Place> getPlaceList() {
         placeList = placeEJB.findPlaces();
         return placeList;
     }
 
+    /**
+     *
+     * @param placeList
+     */
     public void setPlaceList(List<Place> placeList) {
         this.placeList = placeList;
     }
 
+    /**
+     *
+     * @return
+     */
     public PlaceEJB getPlaceEJB() {
         return placeEJB;
     }
 
+    /**
+     *
+     * @param placeEJB
+     */
     public void setPlaceEJB(PlaceEJB placeEJB) {
         this.placeEJB = placeEJB;
     }

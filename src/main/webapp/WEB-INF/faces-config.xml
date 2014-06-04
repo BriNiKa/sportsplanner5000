@@ -30,7 +30,7 @@
     </managed-bean>
     <managed-bean>
         <managed-bean-name>tabBean</managed-bean-name>
-        <managed-bean-class>ch.brinika.sportsplanner5000.business.TabBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>ch.brinika.sportsplanner5000.business.TabEJB</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
 </faces-config>

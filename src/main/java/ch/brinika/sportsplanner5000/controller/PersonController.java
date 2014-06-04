@@ -40,28 +40,46 @@ public class PersonController implements Serializable {
     @EJB
     private TeamEJB teamEJB;
     
+    /**
+     *
+     */
     public void doCreatePerson() {
         personEJB.createPerson(person);
         personList = personEJB.findPersons();
         //return "Person_created";
     }
     
+    /**
+     *
+     */
     public void doUpdatePerson() {
         personEJB.updatePerson(person);
         personList = personEJB.findPersons();
         //return "Person_Update";
     }
     
+    /**
+     *
+     * @param id
+     */
     public void doDeletePerson(int id) {
         personEJB.deletePerson(id);
         personList = personEJB.findPersons();
         //return "Persons_deleted";
     }
     
+    /**
+     *
+     * @param id
+     */
     public void setselectedPerson(int id){
         person = personEJB.findPersonById(id);
     }
     
+    /**
+     *
+     * @param event
+     */
     public void onCellEdit(CellEditEvent event) {
         Object newValue = event.getNewValue();
         String newValueFromEdit = newValue.toString();
@@ -92,36 +110,67 @@ public class PersonController implements Serializable {
         personList = personEJB.findPersons();
     }
     
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
     
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public Person getPerson() {
         return person;
     }
     
+    /**
+     *
+     * @param person
+     */
     public void setPerson(Person person) {
         this.person = person;
     }
     
+    /**
+     *
+     * @return
+     */
     public Collection<Person> getPersonList() {
         personList = personEJB.findPersons();
         return personList;
     }
     
+    /**
+     *
+     * @param personList
+     */
     public void setPersonList(List<Person> personList) {
         this.personList = personList;
     }
     
+    /**
+     *
+     * @return
+     */
     public PersonEJB getPersonEJB() {
         return personEJB;
     }
     
+    /**
+     *
+     * @param personEJB
+     */
     public void setPersonEJB(PersonEJB personEJB) {
         this.personEJB = personEJB;
     }
