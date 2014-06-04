@@ -9,12 +9,16 @@ package ch.brinika.sportsplanner5000.controller;
 import ch.brinika.sportsplanner5000.business.PersonEJB;
 import ch.brinika.sportsplanner5000.business.TeamEJB;
 import ch.brinika.sportsplanner5000.domain.Person;
+import ch.brinika.sportsplanner5000.domain.Place;
 import ch.brinika.sportsplanner5000.domain.Team;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
+import org.primefaces.component.api.UIColumn;
+import org.primefaces.event.CellEditEvent;
 
 /**
  *
@@ -58,6 +62,23 @@ public class TeamController {
     public void doDeleteTeam(int id)
     {
         teamEJB.deleteTeam(id);
+        teamList = teamEJB.findTeams();
+    }
+    
+        /**
+     *
+     * @param event
+     */
+    public void onCellEdit(CellEditEvent event) {
+        Object newValue = event.getNewValue();
+        String newValueFromEdit = newValue.toString();
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        Team teamOld = context.getApplication().evaluateExpressionGet(context, "#{item}", Team.class);
+
+        teamOld.setName(newValueFromEdit);
+        
+        teamEJB.updateTeam(teamOld);
         teamList = teamEJB.findTeams();
     }
     

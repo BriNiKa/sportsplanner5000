@@ -6,25 +6,23 @@
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
         <p:layout style="min-width:1200px;min-height:400px;">
-            <p:layoutUnit position="west" resizable="true" size="400" minSize="40" style="border: 0px solid #000000;">
+            <p:layoutUnit position="west" resizable="true" size="600" minSize="40" style="border: 0px solid #000000;">
                 <b><h:outputText id="tabIrgendwasText" value="Willkommen bei der Teamverwaltung"/></b>
                 <br/>
                 <br/>
                 <h:form>
-                    <p:dataTable value="#{teamController.teamList}" var="item" style="width:300px;">
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Name"/>
-                            </f:facet>
-                            <h:outputText value="#{item.name}"/>
+                    <p:dataTable value="#{teamController.teamList}" var="item" paginator="false" editable="true" editMode="cell" widgetVar="cellteam" style="width:300px;">
+                        <p:ajax event="cellEdit" listener="#{teamController.onCellEdit}"/>
+                        <p:column headerText="Name">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{item.name}" /></f:facet>
+                                <f:facet name="input"><p:inputText placeholder="#{item.name}" value="#{teamController.team.name}" style="width:96%" /></f:facet>
+                            </p:cellEditor>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value=""/>
-                            </f:facet>
-                            <h:commandButton value="Löschen" action="#{teamController.doDeleteTeam(item.teamID)}">
-                                    <f:actionListener binding="#{tabBean.someDecisionMethod(1)}" />
-                                </h:commandButton>
+                        <p:column width="30">
+                        <h:commandButton value="Löschen" action="#{teamController.doDeleteTeam(item.teamID)}">
+                                <f:actionListener binding="#{tabBean.someDecisionMethod(1)}" />
+                        </h:commandButton>
                         </p:column>
                     </p:dataTable>
                 </h:form>

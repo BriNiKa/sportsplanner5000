@@ -7,10 +7,14 @@
 package ch.brinika.sportsplanner5000.controller;
 
 import ch.brinika.sportsplanner5000.business.PlaceEJB;
+import ch.brinika.sportsplanner5000.domain.Person;
 import ch.brinika.sportsplanner5000.domain.Place;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
+import org.primefaces.component.api.UIColumn;
+import org.primefaces.event.CellEditEvent;
 
 /**
  *
@@ -43,7 +47,7 @@ public class PlaceController {
         placeList = placeEJB.findPlaces();
         //return "Place_updated";
     }
-     
+    
     /**
      *
      * @param id
@@ -53,6 +57,34 @@ public class PlaceController {
         placeEJB.deletePlace(id);
         placeList = placeEJB.findPlaces();
         //return "Place_updated";
+    }
+    
+    /**
+     *
+     * @param event
+     */
+    public void onCellEdit(CellEditEvent event) {
+        Object newValue = event.getNewValue();
+        String newValueFromEdit = newValue.toString();
+        
+        UIColumn column =  event.getColumn();
+        String columnHeader = column.getHeaderText();
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        Place placeOld = context.getApplication().evaluateExpressionGet(context, "#{item}", Place.class);
+        
+        if("Ort".equals(columnHeader)){
+            placeOld.setLocation(newValueFromEdit);
+        }
+        else if("Name".equals(columnHeader)){
+            placeOld.setName(newValueFromEdit);
+        }
+        else if("Beschreibung".equals(columnHeader)){
+            placeOld.setDescription(newValueFromEdit);
+        }
+        
+        placeEJB.updatePlace(placeOld);
+        placeList = placeEJB.findPlaces();
     }
     
     /**
