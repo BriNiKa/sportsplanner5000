@@ -110,7 +110,7 @@ public class EventController {
      * Diese Methode setzt die zu exportierde PDF-Seite auf Querformat
      * @param document zu exportierendes Dokument
      */
-    public void preProcessPDF(Object document) {
+    public void preProcessDoc(Object document) {
         Document doc = (Document) document;
         doc.setPageSize(PageSize.A4.rotate());
     }

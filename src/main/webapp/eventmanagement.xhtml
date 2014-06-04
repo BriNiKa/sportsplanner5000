@@ -53,16 +53,23 @@
                                 </f:facet>
                                 <h:outputText value="#{item.placeFromEvent.name}"/>
                             </p:column>
-                            <p:column>
+                            <p:column exportable="false">
                                 <h:commandButton value="Löschen" action="#{eventController.doDeleteEvent(item.eventID)}">
                                     <f:actionListener binding="#{tabBean.someDecisionMethod(2)}" />
                                 </h:commandButton>
                             </p:column>
                         </p:dataTable>
+                        <br/>
+                        <br/>
                         <p:panel header="Datentabelle als PDF exportieren">
+                            <h:commandLink id="excel">
+                                <h:outputText value="Ecxel-File generieren"/>
+                                <p:dataExporter type="xls" target="myData" fileName="Events" />
+                            </h:commandLink>
+                            <br/>
                             <h:commandLink>
                                 <h:outputText value="PDF generieren"/>
-                                <p:dataExporter type="pdf" target="myData" fileName="mypdf" preProcessor="#{eventController.preProcessPDF}"/>
+                                <p:dataExporter type="pdf" target="myData" fileName="Events" preProcessor="#{eventController.preProcessDoc}"/>
                             </h:commandLink>
                         </p:panel>
                     </h:form>
