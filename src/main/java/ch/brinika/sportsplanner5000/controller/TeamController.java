@@ -133,7 +133,7 @@ public class TeamController {
      * @param person
      */
     public void lueg(Person person) {
-        System.out.println(person.getPrename());
+//        System.out.println(person.getPrename());
     }
 
     /**
@@ -165,14 +165,13 @@ public class TeamController {
      * @param person
      */
     public void removeMemberFromTeam(Person person) {
-         System.out.println(person.getPrename());
-        System.out.println("Bla");
-        Collection<Person> personCollection = this.team.getPersonCollection();
-        boolean b = personCollection.remove(person);
-        System.out.println(b);
+        Team teamToSave = teamEJB.findTeamById(this.team.getTeamID());
         
-        this.team.setPersonCollection(personCollection);
-        teamEJB.updateTeam(this.team);
-        //teamEJB.findTeamById(team.getTeamID()).setPersonCollection(memberList);
+        Collection<Person> personCollection = teamToSave.getPersonCollection();
+        
+        personCollection.remove(person);
+        teamToSave.setPersonCollection(personCollection);
+        teamEJB.updateTeam(teamToSave);
+        team = teamToSave;
     }
 }
