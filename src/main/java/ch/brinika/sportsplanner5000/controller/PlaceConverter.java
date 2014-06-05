@@ -27,7 +27,7 @@ public class PlaceConverter implements Converter{
     PlaceEJB placeEJB;
     
     /**
-     *
+     * Ort wird als Objekt von übergebenem String zurückgegeben.
      * @param context
      * @param component
      * @param value
@@ -51,7 +51,7 @@ public class PlaceConverter implements Converter{
     }
     
     /**
-     *
+     * Ort ID wird als String von übergebenem Ort zurückgegeben.
      * @param context
      * @param component
      * @param value

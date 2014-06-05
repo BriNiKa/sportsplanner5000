@@ -27,7 +27,7 @@ public class TeamConverter implements Converter{
     TeamEJB teamEJB;
 
     /**
-     *
+     * Team wird als Objekt vom übergebenen String zurückgegeben.
      * @param context
      * @param component
      * @param value
@@ -51,7 +51,7 @@ public class TeamConverter implements Converter{
     }
 
     /**
-     *
+     * Team ID wird als String von übergebenem Team zurückgegeben.
      * @param context
      * @param component
      * @param value

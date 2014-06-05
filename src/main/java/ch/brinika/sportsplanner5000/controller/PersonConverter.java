@@ -27,7 +27,7 @@ public class PersonConverter implements Converter{
     PersonEJB personEJB;
     
     /**
-     *
+     * Person wird als Objekt von übergebenem String zurückgegeben.
      * @param context
      * @param component
      * @param value
@@ -51,7 +51,7 @@ public class PersonConverter implements Converter{
     }
 
     /**
-     *
+     * Person ID wird als String von übergebenem Team zurückgegeben.
      * @param context
      * @param component
      * @param value
