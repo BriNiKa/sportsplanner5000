@@ -8,29 +8,29 @@
 
 
         <p:layout style="min-width:1200px;min-height:400px;">
-            <p:layoutUnit position="west" resizable="true" size="400" minSize="40" style="border: 0px solid #000000;">
+            <p:layoutUnit position="west" resizable="true" size="600" minSize="40" style="border: 0px solid #000000;">
                 <b><h:outputText id="tab4Text" value="Willkommen bei der Ortsverwaltung"/></b>
                 <br/>
                 <br/>
                 <h:form>
-                    <p:dataTable value="#{placeController.placeList}" var="item" paginator="false" editable="true" editMode="cell" widgetVar="cellplace" style="width:300px;">
+                    <p:dataTable value="#{placeController.placeList}" var="item" paginator="false" editable="true" editMode="cell" widgetVar="cellplace" style="width:400px;">
                         <p:ajax event="cellEdit" listener="#{placeController.onCellEdit}"/>
                         <p:column headerText="Ort">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{item.location}" /></f:facet>
-                                <f:facet name="input"><p:inputText placeholder="#{item.location}" value="#{placeController.place.location}" style="width:96%" /></f:facet>
+                                <f:facet name="input"><p:inputText placeholder="#{item.location}" value="#{placeController.place.location}" style="width:100%" /></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column headerText="Name">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{item.name}" /></f:facet>
-                                <f:facet name="input"><p:inputText placeholder="#{item.name}" value="#{placeController.place.name}" style="width:96%" /></f:facet>
+                                <f:facet name="input"><p:inputText placeholder="#{item.name}" value="#{placeController.place.name}" style="width:100%" /></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column headerText="Beschreibung">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{item.description}" /></f:facet>
-                                <f:facet name="input"><p:inputText placeholder="#{item.description}" value="#{placeController.place.description}" style="width:96%" /></f:facet>
+                                <f:facet name="input"><p:inputText placeholder="#{item.description}" value="#{placeController.place.description}" style="width:100%" /></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column width="30">
