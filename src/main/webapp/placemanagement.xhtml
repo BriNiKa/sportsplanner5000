@@ -53,7 +53,7 @@
                         <p:outputLabel value="Name:" for="name" />
                         <p:inputText id="name" value="#{placeController.place.name}" title="Name" />
                         <p:outputLabel value="Beschreibung" for="description"/>
-                        <p:inputText id="description" size="50" value="#{placeController.place.description}" title="Description" />
+                        <p:inputTextarea id="description" rows="6" cols="33"  value="#{placeController.place.description}" title="Description" style="resize: both;"/>
                     </p:panelGrid>
                     <br/>
                     <h:commandButton value="Speichern" action="#{placeController.doCreatePlace()}">

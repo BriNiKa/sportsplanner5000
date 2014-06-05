@@ -78,6 +78,7 @@ public class TeamEJB {
     {
         em.merge(team);
         em.flush();
+        
         return team;
     }
 
