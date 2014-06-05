@@ -26,7 +26,9 @@ import org.primefaces.event.RowEditEvent;
 
 /**
  *
- * @author simon
+ * @author Simon Kaufmann
+ * @author Andreas Briw
+ * @author Michael Niggeler
  */
 @ViewScoped
 public class PersonController implements Serializable {

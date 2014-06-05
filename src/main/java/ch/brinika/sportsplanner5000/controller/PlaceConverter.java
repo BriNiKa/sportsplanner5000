@@ -16,7 +16,9 @@ import javax.faces.convert.FacesConverter;
 
 /**
  *
- * @author simon
+ * @author Simon Kaufmann
+ * @author Andreas Briw
+ * @author Michael Niggeler
  */
 @FacesConverter("placeConverter")
 public class PlaceConverter implements Converter{

@@ -15,8 +15,10 @@ import java.util.List;
 import javax.ejb.EJB;
 
 /**
- *
- * @author simon
+ * 
+ * @author Simon Kaufmann
+ * @author Andreas Briw
+ * @author Michael Niggeler
  */
 public class EventController {
 

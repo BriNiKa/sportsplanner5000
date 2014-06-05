@@ -15,8 +15,10 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 /**
- *
- * @author simon
+ * 
+ * @author Simon Kaufmann
+ * @author Andreas Briw
+ * @author Michael Niggeler
  */
 @FacesConverter("teamConverter")
 public class TeamConverter implements Converter{

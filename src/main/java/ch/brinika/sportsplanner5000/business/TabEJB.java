@@ -10,7 +10,9 @@ import org.primefaces.component.tabview.TabView;
 
 /**
  *
- * @author Simon
+ * @author Simon Kaufmann
+ * @author Andreas Briw
+ * @author Michael Niggeler
  */
 public class TabEJB {
     

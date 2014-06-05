@@ -17,8 +17,9 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author simon
+ * @author Simon Kaufmann
  * @author Andreas Briw
+ * @author Michael Niggeler
  */
 @Stateless
 @LocalBean

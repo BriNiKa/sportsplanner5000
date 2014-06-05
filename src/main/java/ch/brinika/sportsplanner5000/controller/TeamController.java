@@ -19,8 +19,9 @@ import org.primefaces.event.CellEditEvent;
 
 /**
  *
- * @author simon
+ * @author Simon Kaufmann
  * @author Andreas Briw
+ * @author Michael Niggeler
  */
 public class TeamController {
 
