@@ -9,15 +9,12 @@ package ch.brinika.sportsplanner5000.controller;
 import ch.brinika.sportsplanner5000.business.PersonEJB;
 import ch.brinika.sportsplanner5000.business.TeamEJB;
 import ch.brinika.sportsplanner5000.domain.Person;
-import ch.brinika.sportsplanner5000.domain.Place;
 import ch.brinika.sportsplanner5000.domain.Team;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
-import org.primefaces.component.api.UIColumn;
 import org.primefaces.event.CellEditEvent;
 
 /**

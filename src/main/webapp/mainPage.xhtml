@@ -27,7 +27,7 @@
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="center" style="border: 0px;">
-                    <p:tabView id="tabView" style="border: 0px;" binding="#{tabBean.messagesTab}">
+                    <p:tabView id="tabView" style="border: 0px;" binding="#{tabBean.messagesTab}" dynamic="true" cache="false">
                             <p:tab id="tab1" title="Personenverwaltung">
                                 <ui:include src="personmanagement.xhtml"/>
                             </p:tab>

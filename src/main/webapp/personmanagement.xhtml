@@ -5,165 +5,85 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <h:panelGrid columns="2" cellpadding="5">
-        <h:outputText id="tab1Text" value="Willkommen bei der Personenverwaltung"/>
-        <h:messages/>
         <p:layout style="min-width:1300px;min-height:400px;">
-            <p:layoutUnit position="west" resizable="true" size="1000" minSize="40">
+            <p:layoutUnit position="west" resizable="true" size="900" minSize="40" style="border: 0px solid #000000;">
+                <b><h:outputText id="tab0Text" value="Willkommen bei der Personenverwaltung"/></b>
+                <br/>
+                <br/>
                 <f:view>
                     <h:form>
-                        <p:dataTable value="#{personController.personList}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="ID"/>
-                                </f:facet>
-                                <h:outputText value="#{item.personID}"/>
+                        <p:growl id="msg"/>
+                        <p:dataTable id="persons" var="anzeigen" paginator="true" rows="15"  value="#{personController.personList}" editable="true" editMode="cell" widgetVar="cellperson">
+                            
+                            <p:ajax event="cellEdit" listener="#{personController.onCellEdit}"/>
+                            <p:column headerText="Vorname">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.prename}" /></f:facet>
+                                    <f:facet name="input"><p:inputText placeholder="#{anzeigen.prename}" value="#{personController.person.prename}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Prename"/>
-                                </f:facet>
-                                <h:outputText value="#{item.prename}"/>
+                            <p:column headerText="Nachname">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.surname}" /></f:facet>
+                                    <f:facet name="input"><p:inputText placeholder="#{anzeigen.surname}" value="#{personController.person.surname}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Surname"/>
-                                </f:facet>
-                                <h:outputText value="#{item.surname}"/>
+                            <p:column headerText="Adresse">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.address}" /></f:facet>
+                                    <f:facet name="input"><p:inputText placeholder="#{anzeigen.address}" value="#{personController.person.address}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Address"/>
-                                </f:facet>
-                                <h:outputText value="#{item.address}"/>
+                            <p:column headerText="Telefon">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.phone}" /></f:facet>
+                                    <f:facet name="input"><p:inputText placeholder="#{anzeigen.phone}" value="#{personController.person.phone}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Mail"/>
-                                </f:facet>
-                                <h:outputText value="#{item.mail}"/>
+                            <p:column headerText="E-Mail">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{anzeigen.mail}" /></f:facet>
+                                    <f:facet name="input"><p:inputText placeholder="#{anzeigen.mail}" value="#{personController.person.mail}" style="width:96%" label="Year"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Phone"/>
-                                </f:facet>
-                                <h:outputText value="#{item.phone}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value=""/>
-                                </f:facet>
+                            <p:column width="30">
                                 <h:commandButton 
                                     value="Löschen"
-                                    action="#{personController.doDeletePerson(item.personID)}">
+                                    action="#{personController.doDeletePerson(anzeigen.personID)}">
+                                    <f:actionListener binding="#{tabBean.someDecisionMethod(0)}" />
                                 </h:commandButton>
-                                <br/>
-                                <br/>
-                                <p:commandButton 
-                                    value="Bearbeiten"
-
-                                    onclick="#{personController.setselectedPerson(item.personID)};
-                                                                    PF('dlg3').show();">
-                                </p:commandButton>
-                                <p:dialog header="Effects" widgetVar="dlg3" height="300" width="350">
-                                    <h:form prependId="false">
-
-                                        Vorname:
-                                        <p:inputText id="prename"
-                                                     value="#{personController.person.prename}" 
-                                                     required="true" 
-                                                     requiredMessage="Du musst einen Vornamen eingeben" />
-                                        <p:message for="prename"/>
-                                        <br/>
-                                        Nachname:
-                                        <p:inputText id="surname" 
-                                                     value="#{personController.person.surname}" 
-                                                     required="true" 
-                                                     requiredMessage="Du musst einen Nachnamen eingeben" />
-                                        <p:message for="surname"/>
-                                        <br/>
-                                        Adresse:
-                                        <p:inputText id="address" 
-                                                     value="#{personController.person.address}" 
-                                                     required="true" 
-                                                     requiredMessage="Du musst eine Strasse eingeben" />
-                                        <p:message for="address"/>
-                                        <br/>
-                                        E-Mail:
-                                        <p:inputText id="email" 
-                                                     value="#{personController.person.mail}" 
-                                                     required="true" 
-                                                     requiredMessage="Du musst eine E-Mail eingeben" />
-                                        <p:message for="email"/>
-                                        <br/>
-                                        Telefonnummer:
-                                        <p:inputText id="phone" 
-                                                     value="#{personController.person.phone}" 
-                                                     required="true" 
-                                                     requiredMessage="Du musst ein Telefonnummer eingeben" />
-                                        <p:message for="phone"/>
-
-                                        <br/>
-                                        <br/>
-                                        <p:commandButton 
-                                            value="Speichern" 
-                                            action="#{personController.doUpdatePerson()}"/>
-
-                                    </h:form>
-                                </p:dialog>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
-
+                    
             </p:layoutUnit>
-
-            <p:layoutUnit position="center" resizable="true" size="400">
+                
+            <p:layoutUnit position="center" resizable="true" size="450" style="border: 0px solid #000000;">
+                <b><h:outputText id="tab0Text1" value="Neue Person erfassen"/></b>
+                <br/>
+                <br/>
                 <h:form prependId="false">
-
-                    Vorname:
-                    <h:inputText id="prename" 
-                                 value="#{personController.person.prename}" 
-                                 required="true" 
-                                 requiredMessage="Du musst einen Vornamen eingeben" />
-                    <h:message for="prename"/>
-                    <br/>
-                    Nachname:
-                    <h:inputText id="surname" 
-                                 value="#{personController.person.surname}" 
-                                 required="true" 
-                                 requiredMessage="Du musst einen Nachnamen eingeben" />
-                    <h:message for="surname"/>
-                    <br/>
-                    Adresse:
-                    <h:inputText id="address" 
-                                 value="#{personController.person.address}" 
-                                 required="true" 
-                                 requiredMessage="Du musst eine Strasse eingeben" />
-                    <h:message for="address"/>
-                    <br/>
-                    E-Mail:
-                    <h:inputText id="email" 
-                                 value="#{personController.person.mail}" 
-                                 required="true" 
-                                 requiredMessage="Du musst eine E-Mail eingeben" />
-                    <h:message for="email"/>
-                    <br/>
-                    Telefonnummer:
-                    <h:inputText id="phone" 
-                                 value="#{personController.person.phone}" 
-                                 required="true" 
-                                 requiredMessage="Du musst ein Telefonnummer eingeben" />
-                    <h:message for="phone"/>
-
-                    <br/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Vorname" for="prename"/>
+                        <p:inputText id="prename" value="#{personController.person.prename}" title="prename" required="true" requiredMessage="Du musst einen Vornamen eingeben"/>
+                        <p:outputLabel value="Nachname" for="surname" />
+                        <p:inputText id="surname" value="#{personController.person.surname}" title="surname" required="true" requiredMessage="Du musst einen Nachnamen eingeben"/>
+                        <p:outputLabel value="Adresse" for="address" />
+                        <p:inputText id="address" value="#{personController.person.address}" title="address" required="true" requiredMessage="Du musst eine Adresse eingeben"/>
+                        <p:outputLabel value="E-Mail" for="email" />
+                        <p:inputText id="email" value="#{personController.person.mail}" title="email" required="true" requiredMessage="Du musst eine E-Mailadresse eingeben"/>
+                        <p:outputLabel value="Telefonnummer" for="phone" />
+                        <p:inputText id="phone" value="#{personController.person.phone}" title="phone" required="true" requiredMessage="Du musst eine Telefonnummer eingeben"/>    
+                    </p:panelGrid>
                     <br/>
                     <h:commandButton 
                         value="Speichern" 
-                        action="#{personController.doCreatePerson()}"/>
-
+                        action="#{personController.doCreatePerson()}">
+                    <f:actionListener binding="#{tabBean.someDecisionMethod(0)}" />
+                    </h:commandButton>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
-
     </h:panelGrid>
 </ui:composition>

@@ -14,11 +14,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Michael
  */
+@RequestScoped
 public class MemberController {
     
     private Person person = new Person();
