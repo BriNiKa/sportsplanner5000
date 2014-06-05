@@ -29,7 +29,7 @@ public class PlaceController {
     private PlaceEJB placeEJB;
 
     /**
-     *
+     * Erstellt ein Ort und füllt die Ortsliste.
      */
     public void doCreatePlace()
     {
@@ -39,7 +39,7 @@ public class PlaceController {
     }
     
     /**
-     *
+     * Aktualisiert den Ort und füllt die Ortsliste.
      */
     public void doUpdatePlace()
     {
@@ -49,7 +49,7 @@ public class PlaceController {
     }
     
     /**
-     *
+     * Löscht das Team mit der übergebenen ID.
      * @param id
      */
     public void doDeletePlace(int id)
@@ -60,7 +60,9 @@ public class PlaceController {
     }
     
     /**
-     *
+     * Bei Zelleneditierung von einem Ort wird diese Methode ausgeführt
+     * und die Werte ausgelesen.
+     * Der editierte Ort wird dann in der Datenbank aktualisiert und die Ortsliste gefüllt.
      * @param event
      */
     public void onCellEdit(CellEditEvent event) {

@@ -49,7 +49,7 @@ public class Team implements Serializable {
     private String name;
 
     /**
-     *
+     * Leerer Konstruktor
      */
     public Team() {
     }

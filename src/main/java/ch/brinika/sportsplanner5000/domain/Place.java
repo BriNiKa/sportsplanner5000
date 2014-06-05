@@ -56,7 +56,7 @@ public class Place implements Serializable {
     private Collection<Event> eventCollection;
 
     /**
-     *
+     * Leerer Konstruktor
      */
     public Place() {
     }

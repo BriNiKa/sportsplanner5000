@@ -30,7 +30,7 @@ public class PersonEJB {
     // Methods -------------------------------------------------------------
 
     /**
-     *
+     * Gibt eine List der vorhandenen Personen zurück
      * @return
      */
         public List<Person> findPersons()
@@ -40,7 +40,7 @@ public class PersonEJB {
     }
     
     /**
-     *
+     * Gibt eine Person mit der bestimmten ID zurück
      * @param id
      * @return
      */
@@ -49,7 +49,7 @@ public class PersonEJB {
     }
     
     /**
-     *
+     * Speichert die Person in der Datenbank und gibt sie zurück
      * @param person
      * @return
      */
@@ -60,7 +60,7 @@ public class PersonEJB {
     }
     
     /**
-     *
+     * Löscht die Person mit der bestimmten ID aus der Datenbank
      * @param id
      * @return
      */
@@ -72,7 +72,7 @@ public class PersonEJB {
     }
 
     /**
-     *
+     * Aktualisiert die Person in der Datenbank
      * @param person
      * @return
      */

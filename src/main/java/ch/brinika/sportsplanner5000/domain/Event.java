@@ -86,7 +86,7 @@ public class Event implements Serializable {
     private Place placeFromEvent;
 
     /**
-     *
+     * Leerer Konstruktor
      */
     public Event() {
     }

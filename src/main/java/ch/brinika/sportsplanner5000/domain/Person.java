@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author simon
  */
 @Entity
@@ -75,13 +75,13 @@ public class Person implements Serializable {
     private Collection<Event> eventCollection;
 
     /**
-     *
+     * Leerer Konstruktor
      */
     public Person() {
     }
 
     /**
-     *
+     * 
      * @param personID
      */
     public Person(Integer personID) {
@@ -89,7 +89,7 @@ public class Person implements Serializable {
     }
 
     /**
-     *
+     * 
      * @return
      */
     public Integer getPersonID() {

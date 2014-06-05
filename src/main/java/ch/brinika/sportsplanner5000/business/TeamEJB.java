@@ -31,7 +31,7 @@ public class TeamEJB {
     // Methods -------------------------------------------------------------
 
     /**
-     *
+     * Gibt eine List der vorhandenen Teams zurück
      * @return
      */
         public List<Team> findTeams() {
@@ -40,7 +40,7 @@ public class TeamEJB {
     }
     
     /**
-     *
+     * Gibt ein Team mit der bestimmten ID zurück
      * @param id
      * @return
      */
@@ -49,7 +49,7 @@ public class TeamEJB {
     }
     
     /**
-     *
+     * Speichert das Team in der Datenbank und gibt es zurück
      * @param team
      * @return
      */
@@ -60,7 +60,7 @@ public class TeamEJB {
     }
 
     /**
-     *
+     * Löscht das Team mit der bestimmten ID aus der Datenbank
      * @param id
      */
     public void deleteTeam(int id)
@@ -70,7 +70,7 @@ public class TeamEJB {
     }
 
     /**
-     *
+     * Aktualisiert das Team in der Datenbank
      * @param team
      * @return
      */

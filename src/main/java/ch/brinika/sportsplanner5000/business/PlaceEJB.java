@@ -28,7 +28,7 @@ public class PlaceEJB {
     // Methods -------------------------------------------------------------
 
     /**
-     *
+     * Gibt eine List der vorhandenen Orte zurück
      * @return
      */
         public List<Place> findPlaces(){
@@ -36,7 +36,7 @@ public class PlaceEJB {
     }
     
     /**
-     *
+     * Speichert den Ort in der Datenbank und gibt ihn zurück
      * @param place
      * @return
      */
@@ -47,7 +47,7 @@ public class PlaceEJB {
     }
     
     /**
-     *
+     * Löscht den Ort mit der bestimmten ID aus der Datenbank
      * @param id
      */
     public void deletePlace(int id)
@@ -58,7 +58,7 @@ public class PlaceEJB {
     }
     
     /**
-     *
+     * Aktualisiert das Team in der Datenbank
      * @param place
      */
     public void updatePlace(Place place)

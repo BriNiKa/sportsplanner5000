@@ -28,7 +28,7 @@ public class EventEJB {
      // Methods -------------------------------------------------------------
 
     /**
-     *
+     * Gibt eine List der vorhandenen Events zurück
      * @return
      */
         public List<Event> findEvents(){
@@ -36,7 +36,7 @@ public class EventEJB {
     }
     
     /**
-     *
+     * Speichert den Event in der Datenbank und gibt ihn zurück
      * @param event
      * @return
      */
@@ -47,7 +47,7 @@ public class EventEJB {
     }
     
     /**
-     *
+     * Löscht den Event mit der bestimmten ID aus der Datenbank
      * @param id
      */
     public void deleteEvent(int id)
@@ -58,7 +58,7 @@ public class EventEJB {
     }
     
     /**
-     *
+     * Aktualisiert den Event in der Datenbank
      * @param event
      * @return
      */
@@ -68,6 +68,5 @@ public class EventEJB {
         return ("Event updatet");
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+
 }

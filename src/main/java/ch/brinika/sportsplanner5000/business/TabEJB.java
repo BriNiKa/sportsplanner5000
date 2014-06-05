@@ -33,7 +33,7 @@ public class TabEJB {
     }
     
     /**
-     *
+     * Setzt den Index des Tabs
      * @param index
      */
     public void someDecisionMethod(int index){

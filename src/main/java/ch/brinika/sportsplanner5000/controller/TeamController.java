@@ -33,7 +33,7 @@ public class TeamController {
     private PersonEJB personEJB;
 
     /**
-     *
+     * Erstellt ein Team und füllt die Teamliste.
      */
     public void doCreateTeam()
     {
@@ -43,7 +43,7 @@ public class TeamController {
     }
     
     /**
-     *
+     * Aktualisiert das Team und füllt die Teamliste.
      */
     public void doUpdateTeam()
     {
@@ -53,7 +53,7 @@ public class TeamController {
     }
      
     /**
-     *
+     * Löscht das Team mit der übergebenen ID.
      * @param id
      */
     public void doDeleteTeam(int id)
@@ -62,8 +62,10 @@ public class TeamController {
         teamList = teamEJB.findTeams();
     }
     
-        /**
-     *
+    /**
+     * Bei Zelleneditierung vom Team wird diese Methode ausgeführt
+     * und die Werte ausgelesen.
+     * Das editierte Team wird dann in der Datenbank aktualisiert und die Teamliste gefüllt.
      * @param event
      */
     public void onCellEdit(CellEditEvent event) {
@@ -129,22 +131,23 @@ public class TeamController {
     }
 
     /**
-     *
+     * Leere Methode
      * @param person
      */
     public void lueg(Person person) {
-//        System.out.println(person.getPrename());
+
     }
 
     /**
-     *
+     * Leere Methode
      */
     public void lueg2() {
-//        System.out.println(person.getPrename());
+
     }
 
     /**
-     *
+     * Fügt eine Person zu der PersonenCollection hinzu und
+     * aktualisert das Team.
      * @param person
      */
     public void addNewMember(Person person) {
@@ -161,7 +164,8 @@ public class TeamController {
     }
 
     /**
-     *
+     * Löscht eine Person aus der PersonenColletion des Teams und
+     * aktualisiert das Team.
      * @param person
      */
     public void removeMemberFromTeam(Person person) {

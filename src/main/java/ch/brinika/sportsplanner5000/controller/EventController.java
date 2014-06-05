@@ -27,7 +27,7 @@ public class EventController {
     private EventEJB eventEJB;
 
     /**
-     *
+     * Erstellt ein Event und füllt die Eventliste.
      */
     public void doCreateEvent()
     {
@@ -37,7 +37,7 @@ public class EventController {
     }
     
     /**
-     *
+     * Aktualisiert den Event und füllt die Eventliste.
      */
     public void doUpdateEvent()
     {
@@ -47,7 +47,7 @@ public class EventController {
     }
      
     /**
-     *
+     * Löscht den Event mit der übergebenen ID.
      * @param id
      */
     public void doDeleteEvent(int id)

@@ -41,7 +41,7 @@ public class PersonController implements Serializable {
     private TeamEJB teamEJB;
     
     /**
-     *
+     * Erstellt eine Person und füllt die Personenliste.
      */
     public void doCreatePerson() {
         personEJB.createPerson(person);
@@ -50,7 +50,7 @@ public class PersonController implements Serializable {
     }
     
     /**
-     *
+     * Aktualisiert die Person und füllt die Personenliste.
      */
     public void doUpdatePerson() {
         personEJB.updatePerson(person);
@@ -59,7 +59,7 @@ public class PersonController implements Serializable {
     }
     
     /**
-     *
+     * Löscht die Person mit der übergebenen ID.
      * @param id
      */
     public void doDeletePerson(int id) {
@@ -69,7 +69,7 @@ public class PersonController implements Serializable {
     }
     
     /**
-     *
+     * Setzt die Person mit der übergebenen ID
      * @param id
      */
     public void setselectedPerson(int id){
@@ -77,7 +77,9 @@ public class PersonController implements Serializable {
     }
     
     /**
-     *
+     * Bei Zelleneditierung von einer Person wird diese Methode ausgeführt
+     * und die Werte ausgelesen.
+     * Die editierte Person wird dann in der Datenbank aktualisiert und die Personenliste gefüllt.
      * @param event
      */
     public void onCellEdit(CellEditEvent event) {
